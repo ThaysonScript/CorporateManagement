@@ -95,4 +95,4 @@ Se tiver alguma dúvida ou sugestão, fique à vontade para entrar em contato co
 
 # Licença
 
-Este projeto está licenciado sob a [Licença MIT]() - veja o arquivo `LICENSE` para mais detalhes.
+Este projeto está licenciado sob a [Licença MIT](https://github.com/ThaysonScript/GerenciarEstoque-Laravel/blob/31b9d564bb55b0dff41ff6555412ffc56cd51e73/LICENSE) - veja o arquivo `LICENSE` para mais detalhes.
