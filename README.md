@@ -37,34 +37,52 @@
 
 - Clone o repositório para a sua máquina local.
 
-- Instale as dependências do projeto com o comando `composer install`.
+- Instale as dependências do projeto com o comando 
+```
+composer install
+```
 
 - Crie um arquivo `.env` na raiz do projeto, copiando o conteúdo do arquivo `.env.example` e configurando a conexão com o banco de dados conforme necessário.
 
-- Execute as migrações do banco de dados com o comando `php artisan migrate`.
+- Execute as migrações do banco de dados com o comando
+```
+php artisan migrate
+```
 
-- Inicie a aplicação com o comando `php artisan serve`.
+- Inicie a aplicação com o comando 
+```
+php artisan serve
+```
 
 
 # Configuração de ambiente
 
 A aplicação utiliza informações sensíveis, como a chave de criptografia da aplicação e as informações de conexão com o banco de dados.
 
-Você pode configurar essas variáveis no arquivo `.env`.
+Você pode configurar essas variáveis no arquivo `.env`
 
-Para gerar a chave de criptografia, execute o comando `php artisan key:generate`.
+Para gerar a chave de criptografia, execute o comando:
+```
+php artisan key:generate
+```
 
 
 # Testes automatizados
 
 O projeto inclui testes automatizados para garantir que as funcionalidades principais estejam funcionando corretamente.
 
-Para executar os testes, utilize o comando `php artisan test`.
+Para executar os testes, utilize o comando
+```
+php artisan test
+```
 
 
 # Documentação
 
-Para gerar a documentação do projeto, utilize o comando `php artisan docs:generate`. 
+Para gerar a documentação do projeto, utilize o comando 
+```
+php artisan docs:generate
+```
 
 A documentação será gerada em HTML e salva na pasta `public/docs`.
 
@@ -76,9 +94,22 @@ Contribuições são bem-vindas!
 Para contribuir com este projeto, siga as seguintes etapas:
 
 - Crie um fork do repositório.
-- Crie uma branch com suas alterações `git checkout -b my-new-feature`.
-- Faça o commit das suas alterações `git commit -am 'Add some feature'`.
-- Faça o push para a sua branch `git push origin my-new-feature`.
+
+- Crie uma branch com suas alterações 
+```
+git checkout -b my-new-feature
+```
+
+- Faça o commit das suas alterações
+```
+git commit -am 'Add some feature'
+```
+
+- Faça o push para a sua branch 
+```
+git push origin my-new-feature
+```
+
 - Crie um novo Pull Request.
 
 
