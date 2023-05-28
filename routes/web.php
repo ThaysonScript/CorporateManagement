@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutenticacaoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//-----------------------------------AUTENTICACAO----------------------------------------------//
+Route::get('/registro', [AutenticacaoController::class, 'Index'])->name('autenticacao.registro');
+Route::post('/registro', [AutenticacaoController::class, 'RegistrarUsuario'])->name('autenticacao.registrarUsuario');
+
+
+
+
+
+
+
+
+//-----------------------------------SITE----------------------------------------------//
+Route::get('/home', function(){
+    return view('site.home');
+})->name('site.home');
