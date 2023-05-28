@@ -68,6 +68,17 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
+# Configuração de ambiente seguro
+
+- A aplicação utiliza informações sensíveis, como a chave de criptografia da aplicação e as informações de conexão com o banco de dados.
+
+- Você pode configurar essas variáveis no arquivo `.env` criando o seu próprio DB, usuário e senha.
+
+Para gerar a chave de criptografia, execute o comando:
+```
+php artisan key:generate
+```
+
 
 ## Execute as migrações do banco de dados com
 ```
@@ -78,18 +89,6 @@ php artisan migrate
 ## Inicie a aplicação em modo de desenvolvimento com
 ```
 php artisan serve
-```
-
-
-# Configuração de ambiente seguro
-
-- A aplicação utiliza informações sensíveis, como a chave de criptografia da aplicação e as informações de conexão com o banco de dados.
-
-- Você pode configurar essas variáveis no arquivo `.env` criando o seu próprio DB, usuário e senha.
-
-Para gerar a chave de criptografia, execute o comando:
-```
-php artisan key:generate
 ```
 
 
