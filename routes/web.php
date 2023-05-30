@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Autenticacao\RegistroController;
+use App\Http\Controllers\Autenticacao\LoginController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 //-----------------------------------AUTENTICACAO----------------------------------------------//
 Route::get('/', [RegistroController::class, 'Index'])->name('autenticacao.registro');
 Route::post('/registro', [RegistroController::class, 'RegistrarUsuario'])->name('autenticacao.registrarUsuario');
+
+//login
+Route::get('/login', [LoginController::class, 'Index'])->name('autenticacao.login');
 
 
 
