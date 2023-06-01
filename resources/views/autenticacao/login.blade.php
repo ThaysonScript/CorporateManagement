@@ -1,4 +1,4 @@
-@extends('layouts.login')
+@extends('layouts.autenticacao.login')
 
 @section('titulo-pagina')
     Login
@@ -9,12 +9,13 @@
 <div class="container">
     <div class="card">
       <h1 class="card-title mt-5 mb-4">Faça login</h1>
-      <form>
+      <form action="{{ route('autenticacao.loginEntrando') }}" method="POST">
+        @csrf
         <div class="mb-3">
-          <input type="email" class="form-control" placeholder="Endereço de e-mail">
+          <input type="email" class="form-control" name="email" placeholder="Endereço de e-mail">
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control" placeholder="Senha">
+          <input type="password" class="form-control" name="password" placeholder="Senha">
         </div>
         <button type="submit" class="btn btn-primary btn-block">Entrar</button>
         <p class="mt-3 text-center">Ainda não possui uma conta? <a href="{{ route('autenticacao.registro') }}">Registre-se</a></p>

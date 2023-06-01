@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Autenticacao\RegistroController;
 use App\Http\Controllers\Autenticacao\LoginController;
-
+use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,20 +17,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 //-----------------------------------AUTENTICACAO----------------------------------------------//
-Route::get('/', [RegistroController::class, 'Index'])->name('autenticacao.registro');
+Route::get('/registro', [RegistroController::class, 'Index'])->name('autenticacao.registro');
 Route::post('/registro', [RegistroController::class, 'RegistrarUsuario'])->name('autenticacao.registrarUsuario');
 
 //login
 Route::get('/login', [LoginController::class, 'Index'])->name('autenticacao.login');
+Route::post('/login', [LoginController::class, 'LoginEntrando'])->name('autenticacao.loginEntrando');
 
-
-
+//loggout
+Route::get('/loggout', [LoginController::class, 'Logout'])->name('autenticacao.logout');
 
 
 
 
 
 //-----------------------------------SITE----------------------------------------------//
-Route::get('/home', function(){
-    return view('site.home');
-})->name('site.home');
+// landing page
+Route::get('/', [SiteController::class, 'PaginaInicial'])->name('site.inicialPage');
+
+
+// home page
+Route::get('/home', [SiteController::class, 'PaginaHome'])->middleware('autenticado')->name('site.home');

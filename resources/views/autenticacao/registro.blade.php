@@ -1,4 +1,4 @@
-@extends('layouts.registro')
+@extends('layouts.autenticacao.registro')
 
 @section('titulo-pagina')
     Registro
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <input type="password" class="form-control" nam placeholder="Confirmar senha">
+                    <input type="password" class="form-control" name="passwordConfirm" placeholder="Confirmar senha">
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-block">Registrar</button>
