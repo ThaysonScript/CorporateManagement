@@ -25,6 +25,8 @@
         background-color: #007bff;
 
         margin-right: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
         border-radius: 5px;
     }
 

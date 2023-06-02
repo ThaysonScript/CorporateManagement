@@ -14,7 +14,11 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-primary me-md-2" type="button">Button</button>
+                    <a class="btn btn-primary" href="{{ route('autenticacao.logout') }}">Sair</a>
+                </div>
+                {{-- <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Home</a>
                     </li>
@@ -33,7 +37,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('autenticacao.logout') }}">Logout</a>
                     </li>
-                </ul>
+                </ul> --}}
             </div>
         </div>
     </nav>
