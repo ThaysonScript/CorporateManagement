@@ -3,12 +3,111 @@
 >
 >Com ela, é possível cadastrar produtos, fornecedores, clientes e controlar as entradas e saídas de estoque.
 
+# Instalar e rodar o projeto
+Rodar o Gerenciador de Estoque em sua máquina local é uma tarefa extremamente simples.
 
-# Tecnologias utilizadas
+## Dependências Globais
+Você precisa ter três principais dependências instaladas:
+
+- PHP 8.x
+- Servidor web, geralmente (Apache - Nginx)
+- Banco de dados relacional, geralmente (Mysql - PostgreSql)
+
+### Instalando um ambiente rápido
+Os serviços aqui listados baixam e instalam as dependências acima:
+- xampp
+- laragon (baixe individualmente o php 8.x e configure na aplicação)
+
+
+## Dependências Locais
+Então, após baixar o repositório `git clone`, não se esqueça de instalar as dependências locais do projeto:
+```
+composer install
+```
+
+## Configure o seu banco de dados
+
+- Crie um arquivo `.env` na raiz do projeto, copiando o conteúdo do arquivo `.env.example`
+
+
+- Configure a conexão com o seu banco de dados de preferência
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=GerenciarEstoque-Laravel
+DB_USERNAME=configurar-usuario-proprio
+DB_PASSWORD=configurar-senha-propria
+```
+
+# Configuração de ambiente seguro
+
+- A aplicação utiliza informações sensíveis, como a chave de criptografia da aplicação e as informações de conexão com o banco de dados.
+
+- Você pode configurar essas variáveis no arquivo `.env` criando o seu próprio DB, usuário e senha.
+
+- Para gerar a chave de criptografia, execute o comando:
+```
+php artisan key:generate
+```
+
+
+## Execute as migrações do banco de dados com
+```
+php artisan migrate
+```
+
+## Deseja configurar um host personalizado?
+Você pode configurar um host personalizado para o seu ambiente:
+
+crie um novo arquivo .conf no servidor/conf/example.conf
+```
+<VirtualHost *:80>
+    ServerName seuhost.local
+    DocumentRoot /caminho/para/o/diretorio
+
+    <Directory /caminho/para/o/diretorio>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+</VirtualHost>
+```
+
+- ServerName = 'nome do host';
+- DocumentRoot = 'apontamento raiz do projeto - configure para apontar para a pasta public do laravel';
+- Directory /caminho/para/o/diretorio = 'aponte para a pasta public do seu app laravel';
+
+### Se tiver no Linux ative o host personalizado com
+`sudo a2ensite meuhost.conf`
+
+### Se tiver no Windows ative o host personalizado no arquivo httpd.conf com
+`Include "C:/caminho/para/o/seuhost.conf"`
+
+### Opcionalmente adicione o host a sua maquina para que seja reconhecido pelo nome definido
+`127.0.0.1    seuhost.local`
+
+- Windows: C:\Windows\System32\drivers\etc\hosts
+- Linux: /etc/hosts
+
+
+## Inicie a aplicação em modo de desenvolvimento com
+Inicie seu servidor local e banco de dados e digite na raiz do projeto:
+```
+php artisan serve
+```
+ou, caso host configurado digite a url do seu host no servidor, exemplo
+```
+GerenciadorEstoque.com
+```
+
+
+# Tecnologias utilizadas na Aplicação
 
 - Laravel como framework PHP;
 
-- TailwindCss para o design de interface;
+- Bootstrap 5 para o design de interface;
 
 - MySQL como banco de dados relacional.
 
@@ -26,92 +125,15 @@
 
 # Funcionalidades
 
-- Cadastro de usuários com informações como: nome, e-mail e senha;
+[] Cadastro de usuários com informações como: nome, e-mail e senha;
 
-- Cadastro de produtos com informações como: nome, descrição, preço, quantidade em estoque e categoria;
+[] Cadastro de produtos com informações como: nome, descrição, preço, quantidade em estoque e categoria;
 
-- Cadastro de fornecedores com informações como: nome, endereço, telefone e e-mail;
+[] Cadastro de fornecedores com informações como: nome, endereço, telefone e e-mail;
 
-- Registro de entrada e saída de produtos no estoque;
+[] Registro de entrada e saída de produtos no estoque;
 
-- Relatórios de produtos em estoque, produtos mais vendidos e fornecedores mais utilizados.
-
-
-# Instalação
-Rodar o Gerenciador de Estoque em sua máquina local é uma tarefa extremamente simples.
-
-## Clone o repositório para a sua máquina local:
-### Via Http
-```
-https://github.com/ThaysonScript/GerenciarEstoque-Laravel.git
-```
-### Via Ssh, caso o tenha configurado
-```
-git@github.com:ThaysonScript/GerenciarEstoque-Laravel.git
-```
-
-## Instale as dependências do projeto digitando o comando
-```
-composer install
-```
-
-## Configure o seu banco de dados
-
-- Crie um arquivo `.env` na raiz do projeto, copiando o conteúdo do arquivo `.env.example`
-
-
-- Configure a conexão com o seu banco de dados de preferência
-```
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=GerenciarEstoque-Laravel
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-# Configuração de ambiente seguro
-
-- A aplicação utiliza informações sensíveis, como a chave de criptografia da aplicação e as informações de conexão com o banco de dados.
-
-- Você pode configurar essas variáveis no arquivo `.env` criando o seu próprio DB, usuário e senha.
-
-Para gerar a chave de criptografia, execute o comando:
-```
-php artisan key:generate
-```
-
-
-## Execute as migrações do banco de dados com
-```
-php artisan migrate
-```
-
-
-## Inicie a aplicação em modo de desenvolvimento com
-```
-php artisan serve
-```
-
-
-# Testes automatizados
-
-- O projeto inclui testes automatizados para garantir que as funcionalidades principais estejam funcionando corretamente.
-
-Para executar os testes, utilize o comando
-```
-php artisan test
-```
-
-
-# Documentação
-
-Para gerar a documentação do projeto, utilize o comando 
-```
-php artisan docs:generate
-```
-
-A documentação será gerada em HTML e salva na pasta `public/docs`.
+[] Relatórios de produtos em estoque, produtos mais vendidos e fornecedores mais utilizados.
 
 
 # Contribuindo
