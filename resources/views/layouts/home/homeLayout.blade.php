@@ -10,6 +10,7 @@
   <style>
     body {
       background-color: #f8f9fa;
+      max-height: 100vh;
     }
 
     .navbar {
@@ -23,11 +24,6 @@
     .nav-link {
         color: #fff;
         background-color: #007bff;
-
-        margin-right: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-        border-radius: 5px;
     }
 
     .jumbotron {
@@ -75,32 +71,43 @@
     .card p {
       font-size: 1.2rem;
     }
+
+    #stockList {
+      display: flex;
+      justify-items: center;
+      justify-content: space-evenly;
+    }
+
+    #footer {
+      width: 100%;
+    }
   </style>
 </head>
 
 <body>
 
     @yield('conteudo-pagina')
-
+    
     <!-- Script para filtrar os estoques conforme a pesquisa -->
     <script>
-        document.getElementById("searchStock").addEventListener("input", function () {
-        var input, filter, cards, card, title, i;
-        input = document.getElementById("searchStock");
-        filter = input.value.toUpperCase();
-        cards = document.getElementById("stockList").getElementsByClassName("card");
+      document.getElementById("PesquisarEstoque").addEventListener("input", function ()
+      {
+        let entrada = document.getElementById("PesquisarEstoque").value;
+        let cards = document.getElementById("stockList").getElementsByClassName("card");
+
+        let filtrar = entrada.toUpperCase();
     
-        for (i = 0; i < cards.length; i++) {
-            card = cards[i];
-            title = card.getElementsByClassName("card-title")[0];
+        for (let i = 0; i < cards.length; i++) {
+          let card = cards[i];
+          let titulo = card.getElementsByClassName("card-title")[0];
     
-            if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+          if (titulo.innerText.toUpperCase().indexOf(filtrar) > -1) {
             card.style.display = "";
-            } else {
+          } else {
             card.style.display = "none";
-            }
+          }
         }
-        });
+      });
     </script>
     
     <!-- Scripts do Bootstrap -->
