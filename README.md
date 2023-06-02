@@ -154,6 +154,6 @@ Este projeto está licenciado sob a [Licença MIT](https://github.com/ThaysonScr
 
 ## Contribuidores
 
-<a href="https://github.com/thaysonScript/GerenciadorEstoque-Laravel/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=thaysonScript/GerenciadorEstoque-Laravel&max=500" alt="Lista de contribuidores" width="100%"/>
+<a href="https://github.com/ThaysonScript/GerenciadorEstoque-Laravel/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=ThaysonScript/GerenciadorEstoque-Laravel&max=500" alt="Lista de contribuidores" width="100%"/>
 </a>
