@@ -38,6 +38,8 @@
 
 
 # Instalação
+Rodar o Gerenciador de Estoque em sua máquina local é uma tarefa extremamente simples.
+
 ## Clone o repositório para a sua máquina local:
 ### Via Http
 ```
@@ -149,3 +151,9 @@ Se tiver alguma dúvida ou sugestão, fique à vontade para entrar em contato co
 # Licença
 
 Este projeto está licenciado sob a [Licença MIT](https://github.com/ThaysonScript/GerenciarEstoque-Laravel/blob/31b9d564bb55b0dff41ff6555412ffc56cd51e73/LICENSE) - veja o arquivo `LICENSE` para mais detalhes.
+
+## Contribuidores
+
+<a href="https://github.com/thaysonScript/GerenciadorEstoque-Laravel/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=thaysonScript/GerenciadorEstoque-Laravel&max=500" alt="Lista de contribuidores" width="100%"/>
+</a>
