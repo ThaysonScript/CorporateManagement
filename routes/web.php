@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Autenticacao\RegistroController;
 use App\Http\Controllers\Autenticacao\LoginController;
+use App\Http\Controllers\CadastroEstoques\CategoriaEstoqueController;
+use App\Http\Controllers\CadastroEstoques\CategoriaProdutoController;
+use App\Http\Controllers\CadastroEstoques\ProdutoController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,12 +32,25 @@ Route::get('/loggout', [LoginController::class, 'Logout'])->name('autenticacao.l
 
 
 
-
-
 //-----------------------------------SITE----------------------------------------------//
 // landing page
 Route::get('/', [SiteController::class, 'PaginaInicial'])->name('site.inicialPage');
 
-
 // home page
 Route::get('/home', [SiteController::class, 'PaginaHome'])->middleware('autenticado')->name('site.home');
+
+
+
+
+//-----------------------------------CADASTRO_ESTOQUES----------------------------------------------//
+// cadastroCategoriaEstoque
+Route::get('/Cadastrar-Estoque', [CategoriaEstoqueController::class, 'Index'])->name('cadastroEstoques.categoriaEstoque');
+Route::post('/Cadastrar-Estoque', [CategoriaEstoqueController::class, 'CadastrandoCategoriaEstoque'])->name('cadastroEstoques.categoriaEstoque');
+
+// cadastroCategoriaProduto
+Route::get('/Cadastrar-Categoria-Produto', [CategoriaProdutoController::class, 'Index'])->name('cadastroEstoques.categoriaProduto');
+Route::post('/Cadastrar-Categoria-Produto', [CategoriaProdutoController::class, 'CadastrandoCategoriaProduto'])->name('cadastroEstoques.categoriaProduto');
+
+// cadastroProduto
+Route::get('/Cadastrar-Produto', [ProdutoController::class, 'Index'])->name('cadastroEstoques.produto');
+Route::post('/Cadastrar-Produto', [ProdutoController::class, 'CadastrandoProduto'])->name('cadastroEstoques.produto');
