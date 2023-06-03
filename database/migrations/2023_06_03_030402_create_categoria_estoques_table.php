@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('tituloCategoriaEstoque');
             $table->text('descricaoCategoriaEstoque')->nullable();
 
-            $table->foreignId('users_id');
+            $table->foreignId('user_id')->constrained('users', 'id')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('categoria_produto_id')->constrained('categoria_produtos', 'id')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

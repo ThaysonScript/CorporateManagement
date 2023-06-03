@@ -45,11 +45,4 @@ class Registro extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-
-
-    public function CategoriaEstoque()
-    {
-        $this->hasMany(CategoriaEstoque::class);
-    }
 }
