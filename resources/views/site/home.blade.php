@@ -37,7 +37,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $estoque->tituloCategoriaEstoque }}</h5>
                             <p class="card-text">{{ $estoque->descricaoCategoriaEstoque }}</p>
-                            <a href="{{ route('#') }}" class="btn btn-primary">Mais Sobre?</a>
+                            <a href="#" class="btn btn-primary">Mais Sobre?</a>
                         </div>
                     </div>
 
