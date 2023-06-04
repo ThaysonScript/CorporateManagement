@@ -1,38 +1,10 @@
-@extends('layouts.home.homeLayout')
+@extends('layouts.geral.layoutGeral')
 
 @section('titulo-pagina')
     Home
 @endsection
 
 @section('conteudo-pagina')
-
-    <!-- Barra de navegação -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container">
-            <a class="navbar-brand" href="#">Gerenciador de Estoques</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    
-                    <a class="btn btn-primary me-md-2" href="#">Home</a>
-
-                    <a href="{{ route('cadastroEstoques.categoriaEstoque') }}" class="btn btn-primary">Cadastre seus Estoques</a>
-
-                    <a class="btn btn-primary" href="#">Estoques</a>
-
-                    <a class="btn btn-primary" href="#">Produtos</a>
-
-                    <a class="btn btn-primary" href="#">Categorias</a>
-
-                    <a class="btn btn-primary" href="#">Fornecedores</a>
-
-                    <a class="btn btn-primary" href="{{ route('autenticacao.logout') }}">Sair</a>
-                </div>
-            </div>
-        </div>
-    </nav>
 
     <!-- Conteúdo principal -->
     <div class="container mt-5">
@@ -43,6 +15,7 @@
             <p>Explore as funcionalidades do sistema e mantenha seus estoques sempre atualizados.</p>
             <a class="btn btn-primary btn-lg" href="#" role="button">Saiba Mais</a>
         </div>
+    </div>
 
     <!-- Seção de estoques do usuário -->
     <div class="row mt-5 pb-5">
@@ -64,7 +37,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $estoque->tituloCategoriaEstoque }}</h5>
                             <p class="card-text">{{ $estoque->descricaoCategoriaEstoque }}</p>
-                            <a href="#" class="btn btn-primary">Mais Sobre?</a>
+                            <a href="{{ route('#') }}" class="btn btn-primary">Mais Sobre?</a>
                         </div>
                     </div>
 

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\CadastroEstoques;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Autenticacao\Registro;
 use App\Models\CadastroEstoques\CategoriaEstoque;
 use Illuminate\Support\Facades\Auth;
 
