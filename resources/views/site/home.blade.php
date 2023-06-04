@@ -22,7 +22,7 @@
         <div class="col-md-12">
             <h2 class="text-center">Meus Estoques</h2>
 
-            <div class="form-group mb-4">
+            <div class="container form-group mb-4">
 
                 <label for="PesquisarEstoque" class="mb-2">Pesquisar estoque:</label>
                 <input type="text" class="form-control" id="PesquisarEstoque" placeholder="Digite o nome do seu estoque">
