@@ -31,15 +31,4 @@ class LoginController extends Controller
             'password' => 'Senha Inválida',
         ])->onlyInput('email', 'password');
     }
-
-    public function Logout(Request $request)
-    {
-        Auth::logout();
- 
-        $request->session()->invalidate();
-    
-        $request->session()->regenerateToken();
-    
-        return redirect('/');
-    }
 }

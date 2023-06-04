@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\CadastroEstoques;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Usuario extends Model
+class Produto extends Model
 {
     use HasFactory;
 }
