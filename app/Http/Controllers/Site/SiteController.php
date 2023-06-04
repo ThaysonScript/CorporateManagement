@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\CadastroEstoques\CategoriaEstoque;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -14,6 +15,8 @@ class SiteController extends Controller
 
     public function PaginaHome()
     {
-        return view('site.home');
+        $estoques = CategoriaEstoque::all();
+
+        return view('site.home', compact('estoques'));
     }
 }

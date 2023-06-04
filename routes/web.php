@@ -45,7 +45,7 @@ Route::get('/home', [SiteController::class, 'PaginaHome'])->middleware('autentic
 //-----------------------------------CADASTRO_ESTOQUES----------------------------------------------//
 // cadastroCategoriaEstoque
 Route::get('/Cadastrar-Estoque', [CategoriaEstoqueController::class, 'Index'])->name('cadastroEstoques.categoriaEstoque');
-Route::post('/Cadastrar-Estoque', [CategoriaEstoqueController::class, 'CadastrandoCategoriaEstoque'])->name('cadastroEstoques.categoriaEstoque');
+Route::post('/Cadastrando-Estoque', [CategoriaEstoqueController::class, 'CadastrandoCategoriaEstoque'])->name('cadastroEstoques.cadastrandoEstoque');
 
 // cadastroCategoriaProduto
 Route::get('/Cadastrar-Categoria-Produto', [CategoriaProdutoController::class, 'Index'])->name('cadastroEstoques.categoriaProduto');

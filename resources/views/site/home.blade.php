@@ -18,6 +18,8 @@
                     
                     <a class="btn btn-primary me-md-2" href="#">Home</a>
 
+                    <a href="{{ route('cadastroEstoques.categoriaEstoque') }}" class="btn btn-primary">Cadastre seus Estoques</a>
+
                     <a class="btn btn-primary" href="#">Estoques</a>
 
                     <a class="btn btn-primary" href="#">Produtos</a>
@@ -56,37 +58,17 @@
 
             <div class="row" id="stockList">
 
-                <div class="card text-center mb-3" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Estoque 1</h5>
-                      <p class="card-text">Descrição do Estoque 1.</p>
-                      <a href="#" class="btn btn-primary">Mais Sobre?</a>
+                @foreach ($estoques as $estoque)
+                    
+                    <div class="card text-center mb-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $estoque->tituloCategoriaEstoque }}</h5>
+                            <p class="card-text">{{ $estoque->descricaoCategoriaEstoque }}</p>
+                            <a href="#" class="btn btn-primary">Mais Sobre?</a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card text-center mb-3" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Estoque 2</h5>
-                      <p class="card-text">Descrição do Estoque 2.</p>
-                      <a href="#" class="btn btn-primary">Mais Sobre?</a>
-                    </div>
-                </div>
-
-                <div class="card text-center mb-3" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Estoque 3</h5>
-                      <p class="card-text">Descrição do Estoque 3.</p>
-                      <a href="#" class="btn btn-primary">Mais Sobre?</a>
-                    </div>
-                </div>
-
-                <div class="card text-center mb-3" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Estoque 4</h5>
-                      <p class="card-text">Descrição do Estoque 4.</p>
-                      <a href="#" class="btn btn-primary">Mais Sobre?</a>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
         </div>
