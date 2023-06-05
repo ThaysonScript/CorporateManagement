@@ -31,7 +31,7 @@
 
             <div class="row" id="stockList">
 
-                @foreach ($estoques as $estoque)
+                @foreach ($todosEstoques as $estoque)
                     
                     <div class="card text-center mb-3" style="width: 18rem;">
                         <div class="card-body">

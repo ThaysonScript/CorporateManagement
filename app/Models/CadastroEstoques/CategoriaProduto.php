@@ -9,6 +9,11 @@ class CategoriaProduto extends Model
 {
     use HasFactory;
 
+    public function Usuario()
+    {
+        return $this->belongsTo(Registro::class, 'user_id', 'users');
+    }
+
     public function CategoriaEstoque()
     {
         return $this->belongsTo(CategoriaEstoque::class, 'categoria_estoque_id', 'categoria_estoques');
@@ -16,6 +21,6 @@ class CategoriaProduto extends Model
 
     public function Produtos()
     {
-        return $this->hasMany(Produto::class, 'produto_id', 'produtos');
+        return $this->hasMany(Produto::class);
     }
 }

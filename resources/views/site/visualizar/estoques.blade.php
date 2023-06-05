@@ -6,10 +6,19 @@
 
 @section('conteudo-pagina')
 
-<div class="container">
-    <h1>Ver Estoques</h1>
-    <br>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur magnam illo quasi repellendus quos? Nulla blanditiis nesciunt voluptatibus officiis praesentium aut obcaecati culpa quaerat qui nostrum dolor atque, distinctio aliquid.</p>
+<h1 class="text-center">Estoques</h1>
+<div class="container d-flex justify-content-center text-center column">
+    
+    @foreach ($estoquesTotais as $estoque)
+    <div class="d-flex justify-content-center text-center">
+        <div class="card text-center mb-3">
+            <div class="card-body">
+                <h5>{{ $estoque->tituloCategoriaEstoque }}</h5>
+                <p>{{ $estoque->descricaoCategoriaEstoque }}</p>
+            </div>
+        </div>
+    </div>
+    @endforeach
 </div>
 
 @endsection
