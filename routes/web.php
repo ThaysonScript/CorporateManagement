@@ -34,11 +34,11 @@ use Illuminate\Support\Facades\Route;
 //-----------------------------------AUTENTICACAO----------------------------------------------//
 // registro
 Route::get('/registro', [RegistroController::class, 'Index'])->name('autenticacao.registro');
-Route::post('/registro', [RegistroController::class, 'RegistrarUsuario'])->name('autenticacao.registrarUsuario');
+Route::post('/cadastrando-registro', [RegistroController::class, 'RegistrarUsuario'])->name('autenticacao.registrarUsuario');
 
 //login
 Route::get('/login', [LoginController::class, 'Index'])->name('autenticacao.login');
-Route::post('/login', [LoginController::class, 'LoginEntrando'])->name('autenticacao.loginEntrando');
+Route::post('/login-entrando', [LoginController::class, 'LoginEntrando'])->name('autenticacao.loginEntrando');
 
 //logout
 Route::get('/logout', [LogoutController::class, 'Logout'])->name('autenticacao.logout');
@@ -51,12 +51,13 @@ Route::get('/', [SiteController::class, 'PaginaInicial'])->name('site.inicialPag
 
 // home page
 Route::get('/home', [SiteController::class, 'PaginaHome'])->middleware('autenticado')->name('site.home');
+// Route::get('/Home-Estoques', [SiteController::class, 'HomeEstoques'])->middleware('autenticado')->name('site.home');
 
 
 
 //-----------------------------------SITE_READ----------------------------------------------//
 // ver estoques
-Route::get('/estoquesCadastrados', [VerEstoquesController::class, 'VerEstoques'])->name('site.visualizar.estoques');
+Route::get('/estoques-cadastrados', [VerEstoquesController::class, 'VerEstoques'])->name('site.visualizar.estoques');
 
 // ver categoriaProdutos
 Route::get('/categoria-produto', [VerCategoriaProdutoController::class, 'VerCategoriaProduto'])->name('site.visualizar.categoriaProduto');
@@ -69,13 +70,13 @@ Route::get('/produtos', [VerProdutoController::class, 'VerProdutos'])->name('sit
 
 //-----------------------------------CADASTRO_ITEMS_ESTOQUES----------------------------------------------//
 // cadastroCategoriaEstoque
-Route::get('/Cadastrar-Estoque', [CategoriaEstoqueController::class, 'Index'])->name('cadastroEstoques.categoriaEstoque');
-Route::post('/Cadastrando-Estoque', [CategoriaEstoqueController::class, 'CadastrandoCategoriaEstoque'])->name('cadastroEstoques.cadastrandoEstoque');
+Route::get('/cadastrar-estoque', [CategoriaEstoqueController::class, 'Index'])->name('cadastroEstoques.categoriaEstoque');
+Route::post('/cadastrando-estoque', [CategoriaEstoqueController::class, 'CadastrandoCategoriaEstoque'])->name('cadastroEstoques.cadastrandoEstoque');
 
 // cadastroCategoriaProduto
-Route::get('/Cadastrar-Categoria-Produto', [CategoriaProdutoController::class, 'Index'])->name('cadastroEstoques.categoriaProduto');
-Route::post('/Cadastrar-Categoria-Produto', [CategoriaProdutoController::class, 'CadastrandoCategoriaProduto'])->name('cadastroEstoques.cadastrandoCategoriaProduto');
+Route::get('/cadastrar-categoria-produto', [CategoriaProdutoController::class, 'Index'])->name('cadastroEstoques.categoriaProduto');
+Route::post('/cadastrando-categoria-produto', [CategoriaProdutoController::class, 'CadastrandoCategoriaProduto'])->name('cadastroEstoques.cadastrandoCategoriaProduto');
 
 // cadastroProduto
-Route::get('/Cadastrar-Produto', [ProdutoController::class, 'Index'])->name('cadastroEstoques.produto');
-Route::post('/Cadastrar-Produto', [ProdutoController::class, 'CadastrandoProduto'])->name('cadastroEstoques.cadastrandoProduto');
+Route::get('/cadastrar-produto', [ProdutoController::class, 'Index'])->name('cadastroEstoques.produto');
+Route::post('/cadastrando-produto', [ProdutoController::class, 'CadastrandoProduto'])->name('cadastroEstoques.cadastrandoProduto');

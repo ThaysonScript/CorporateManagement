@@ -15,8 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('tituloProduto');
             $table->text('descricaoProduto')->nullable();
-            $table->string('fornecedorProduto');
-            $table->decimal('quantidadeProdutoEstoque', 10, 2);
+            $table->unsignedBigInteger('quantidadeProduto')->default('1');
+            $table->string('fornecedorProduto')->nullable();
+
+            $table->foreignId('user_id')->constrained('users', 'id')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreignId('categoria_produto_id')->constrained('categoria_produtos', 'id')->onDelete('cascade')->onUpdate('cascade');
+            
             $table->timestamps();
         });
     }
