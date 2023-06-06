@@ -16,10 +16,8 @@ class SiteController extends Controller
 
     public function PaginaHome()
     {
-        $estoques = CategoriaEstoque::all()->where('user_id', $user_id = Auth::user()->id);
+        $todosEstoques = CategoriaEstoque::all()->where('user_id', $user_id = Auth::user()->id);
 
-        // $estoques = $estoques->all()->where('user_id', $user_id = Auth::user()->id);
-
-        return view('site.home', compact('estoques'));
+        return view('site.home', compact('todosEstoques'));
     }
 }

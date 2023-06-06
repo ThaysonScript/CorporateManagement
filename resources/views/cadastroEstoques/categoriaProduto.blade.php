@@ -12,17 +12,17 @@
     
         <div class="card text-center mb-3">
             <div class="card-body">
-                <form action="#" method="POST">
+                <form action="{{ route('cadastroEstoques.cadastrandoCategoriaProduto') }}" method="POST">
                     
                     @csrf
-                    <label for="tituloCategoriaEstoque">Nome da Categoria do Produto:</label>
+                    <label for="tituloCategoriaProduto">Nome da Categoria do Produto:</label>
                     <br>
-                    <input type="text" name="tituloCategoriaEstoque" id="tituloCategoriaEstoque" placeholder="Nome do Estoque">
+                    <input type="text" name="tituloCategoriaProduto" id="tituloCategoriaProduto" placeholder="Nome da Categoria do Produto">
                     <br><br>
 
-                    <label for="descricaoCategoriaEstoque">Descrição da Categoria do Produto:</label>
+                    <label for="descricaoCategoriaProduto">Descrição da Categoria do Produto:</label>
                     <br>
-                    <textarea name="descricaoCategoriaEstoque" id="descricaoCategoriaEstoque" cols="30" rows="10"></textarea>
+                    <textarea name="descricaoCategoriaProduto" id="descricaoCategoriaProduto" cols="30" rows="10"></textarea>
                     <br><br>
                     <button type="submit">Cadastrar a Categoria do Produto</button>
 
