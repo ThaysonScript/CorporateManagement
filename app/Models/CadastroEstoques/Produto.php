@@ -12,11 +12,11 @@ class Produto extends Model
 
     public function CategoriaProduto(): BelongsTo
     {
-        return $this->belongsTo(CategoriaProduto::class, 'categoria_produto_id', 'categoria_produtos');
+        return $this->belongsTo(CategoriaProduto::class, 'categoria_produto_id', 'id');
     }
 
     public function Usuario()
     {
-        return $this->belongsTo(Registro::class, 'user_id', 'users');
+        return $this->belongsTo(Registro::class, 'user_id', 'id');
     }
 }

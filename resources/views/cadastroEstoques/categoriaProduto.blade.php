@@ -24,6 +24,18 @@
                     <br>
                     <textarea name="descricaoCategoriaProduto" id="descricaoCategoriaProduto" cols="30" rows="10"></textarea>
                     <br><br>
+
+                    <div class="form-group">
+                        <select name="categoria_estoque_id" id="categoria_estoque_id" class="form-control text-center">
+                            <label for="categoria_estoque_id">Categoria do Estoque:</label>
+                            @foreach ($estoques as $estoque)
+                                {{-- escolhe o id do estoque pelo nome do estoque e salva no categoria_estoque_id do select que é passado pro controller --}}
+                                <option value="{{ $estoque->id }}">{{ $estoque->tituloCategoriaEstoque }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+    
+                    <br><br>
                     <button type="submit">Cadastrar a Categoria do Produto</button>
 
                 </form>

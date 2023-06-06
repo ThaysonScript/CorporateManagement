@@ -12,6 +12,11 @@ class CategoriaEstoque extends Model
 
     public function Usuario()
     {
-        return $this->belongsTo(Registro::class, 'user_id', 'users');
+        return $this->belongsTo(Registro::class, 'user_id', 'id');
+    }
+
+    public function CategoriaProduto()
+    {
+        return $this->hasMany(CategoriaProduto::class, 'categoria_estoque_id', 'id');
     }
 }
