@@ -11,16 +11,16 @@ class CategoriaProduto extends Model
 
     public function Usuario()
     {
-        return $this->belongsTo(Registro::class, 'user_id', 'users');
+        return $this->belongsTo(Registro::class, 'user_id', 'id');
     }
 
     public function CategoriaEstoque()
     {
-        return $this->belongsTo(CategoriaEstoque::class, 'categoria_estoque_id', 'categoria_estoques');
+        return $this->belongsTo(CategoriaEstoque::class, 'categoria_estoque_id', 'id');
     }
 
     public function Produtos()
     {
-        return $this->hasMany(Produto::class);
+        return $this->hasMany(Produto::class, $foreignKey = null, $localKey = 'id');
     }
 }
