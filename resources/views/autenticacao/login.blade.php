@@ -1,5 +1,6 @@
 @extends('layouts.autenticacao.login')
 
+{{--
 @section('titulo-pagina')
     Login
 @endsection
@@ -23,4 +24,6 @@
     </div>
   </div>
 
-@endsection
+@endsection --}}
+
+<x-auth.login></x-auth.login>

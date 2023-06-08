@@ -1,6 +1,6 @@
 @extends('layouts.autenticacao.registro')
 
-@section('titulo-pagina')
+{{-- @section('titulo-pagina')
     Registro
 @endsection
 
@@ -37,7 +37,11 @@
 
 
     
-    {{-- <div class="row container-fluid vh-100 d-flex justify-content-center align-items-center bg-primary text-white">
+   
+
+@endsection --}}
+
+ {{-- <div class="row container-fluid vh-100 d-flex justify-content-center align-items-center bg-primary text-white">
 
         @if ($errors->any())
             <div class="text-center">
@@ -84,4 +88,6 @@
         </div>
     </div> --}}
 
-@endsection
+
+
+<x-auth.registro></x-auth.registro>

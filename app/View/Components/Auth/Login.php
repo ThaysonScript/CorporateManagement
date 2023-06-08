@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Autenticacao extends Component
+class Login extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,7 @@ class Autenticacao extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.auth.autenticacao');
+        return view('components.auth.login');
     }
 }
+
