@@ -11,7 +11,7 @@ class SiteController extends Controller
 {
     public function PaginaInicial()
     {
-        return view('site.inicialPage');
+        return view('site.landing-page');
     }
 
     public function PaginaHome()

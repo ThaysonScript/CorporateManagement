@@ -1,31 +1,53 @@
-<div>
-    <!-- Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. - Marie Curie -->
+@extends('layouts.layout')
 
-    <div class="container">
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
         <div class="card">
-            <h1 class="card-title mt-5 mb-4">Crie sua conta</h1>
+          <div class="card-body">
+
+            <h1 class="text-center mb-4">Registro</h1>
+
             <form action="{{ route('autenticacao.registrarUsuario') }}" method="POST">
                 @csrf
+                {{-- name input --}}
                 <div class="mb-3">
-                    <input type="text" class="form-control" name="name" placeholder="Nome completo">
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="name" placeholder="Digite seu nome" name="name">
                 </div>
 
+                {{-- email input --}}
                 <div class="mb-3">
-                    <input type="email" class="form-control" name="email" placeholder="Endereço de e-mail">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" name="email">
                 </div>
 
+                {{-- password input --}}
                 <div class="mb-3">
-                    <input type="password" class="form-control" name="password" placeholder="Senha">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="password" placeholder="Digite sua senha" name="password">
                 </div>
 
+                {{-- passwordConfirm input --}}
                 <div class="mb-3">
-                    <input type="password" class="form-control" name="passwordConfirm" placeholder="Confirmar senha">
+                    <label for="confirm_password" class="form-label">Confirmação de Senha</label>
+                    <input type="password" class="form-control" id="confirm_password" placeholder="Confirme sua senha" name="passwordConfirm">
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                <div class="d-grid">
+
+                    {{-- submit input --}}
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+
+                </div>
 
                 <p class="mt-3 text-center">Já possui uma conta? <a href="{{ route('autenticacao.login') }}">Faça login</a></p>
             </form>
+
+          </div>
         </div>
+      </div>
     </div>
+
 </div>

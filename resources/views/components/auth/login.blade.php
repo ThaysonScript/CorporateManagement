@@ -1,19 +1,36 @@
-<div>
-    <!-- When there is no desire, all things are at peace. - Laozi -->
-    <div class="container">
-        <div class="card">
-          <h1 class="card-title mt-5 mb-4">Faça login</h1>
-          <form action="{{ route('autenticacao.loginEntrando') }}" method="POST">
-            @csrf
-            <div class="mb-3">
-              <input type="email" class="form-control" name="email" placeholder="Endereço de e-mail">
+@extends('layouts.layout')
+
+<div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="text-center mb-4">Login</h1>
+              <form action="{{ route('autenticacao.loginEntrando') }}" method="POST">
+                @csrf
+
+                {{-- email input --}}
+                <div class="mb-3">
+                  <label for="email" class="form-label">E-mail</label>
+                  <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" name="email">
+                </div>
+
+                {{-- password input --}}
+                <div class="mb-3">
+                  <label for="password" class="form-label">Senha</label>
+                  <input type="password" class="form-control" id="password" placeholder="Digite sua senha" name="password">
+                </div>
+
+                {{-- submit input --}}
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+
+                <p class="mt-3 text-center">Ainda não possui uma conta? <a href="{{ route('autenticacao.registro') }}">Faça o Registro</a></p>
+
+              </form>
             </div>
-            <div class="mb-3">
-              <input type="password" class="form-control" name="password" placeholder="Senha">
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
-            <p class="mt-3 text-center">Ainda não possui uma conta? <a href="{{ route('autenticacao.registro') }}">Registre-se</a></p>
-          </form>
+          </div>
         </div>
+      </div>
     </div>
-</div>
