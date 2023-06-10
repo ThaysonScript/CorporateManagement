@@ -21,7 +21,7 @@ class CategoriaProdutoController extends Controller
     {
         $encontrarCategoriaProdutoExistente = CategoriaProduto::where('tituloCategoriaProduto', $request->tituloCategoriaProduto)->first();
 
-        if(!$encontrarCategoriaProdutoExistente) {
+        if (!$encontrarCategoriaProdutoExistente) {
             $cadastrandoCategoriaProduto = new CategoriaProduto();
 
             $cadastrandoCategoriaProduto->tituloCategoriaProduto = $request->tituloCategoriaProduto;
@@ -35,7 +35,7 @@ class CategoriaProdutoController extends Controller
             // $categoriaEstoqueID = $categoriaEstoque->id;
 
             // $cadastrandoCategoriaProduto->categoria_estoque_id = $categoriaEstoqueID;
-            
+
             $cadastrandoCategoriaProduto->save();
 
             return redirect()->route('site.home');

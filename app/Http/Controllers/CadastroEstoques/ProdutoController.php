@@ -20,7 +20,7 @@ class ProdutoController extends Controller
     {
         $encontrarProdutoExistente = Produto::where('tituloProduto', $request->tituloProduto)->first();
 
-        if(!$encontrarProdutoExistente) {
+        if (!$encontrarProdutoExistente) {
             $cadastrandoProduto = new Produto();
 
             $cadastrandoProduto->tituloProduto = $request->tituloProduto;

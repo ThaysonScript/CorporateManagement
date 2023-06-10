@@ -24,13 +24,12 @@ class RegistroController extends Controller
 
         $EncontrarContaExistente = Registro::where('email', $request->email)->first();
 
-        if($EncontrarContaExistente) {
+        if ($EncontrarContaExistente) {
             return redirect('autenticacao.registro');
-        }
-        else {
+        } else {
             $criptografarSenha = Hash::make($request->password);
 
-            if(Hash::check($request->passwordConfirm, $criptografarSenha)) {
+            if (Hash::check($request->passwordConfirm, $criptografarSenha)) {
                 $registrarUsuario = new Registro();
 
                 $registrarUsuario->name = $request->name;

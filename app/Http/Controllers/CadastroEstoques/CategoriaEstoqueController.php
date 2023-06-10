@@ -18,7 +18,7 @@ class CategoriaEstoqueController extends Controller
     {
         $encontrarEstoqueExistente = CategoriaEstoque::where('tituloCategoriaEstoque', $request->tituloCategoriaEstoque)->first();
 
-        if(!$encontrarEstoqueExistente) {
+        if (!$encontrarEstoqueExistente) {
             $cadastrandoEstoque = new CategoriaEstoque;
 
             $cadastrandoEstoque->tituloCategoriaEstoque = $request->tituloCategoriaEstoque;

@@ -12,7 +12,7 @@ class VerEstoquesController extends Controller
     public function VerEstoques()
     {
         $estoquesTotais = CategoriaEstoque::all()->where('user_id', $user_id = Auth::user()->id);
-        
+
         return view('site.visualizar.estoques', compact('estoquesTotais'));
     }
 }
