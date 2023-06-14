@@ -1,3 +1,7 @@
-@extends('layouts.layout')
+<x-layouts.layout>
 
-<x-auth.login></x-auth.login>
+    <x-slot name="tituloPagina">Login</x-slot>
+
+    <x-auth.login></x-auth.login>
+
+</x-layouts.layout>

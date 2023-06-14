@@ -1,4 +1,7 @@
-@extends('layouts.layout')
+<x-layouts.layout>
 
-<x-site.home>
-</x-site.home>
+    <x-slot name="tituloPagina">Pagina Inicial</x-slot>
+
+    <x-site.home></x-site.home>
+
+</x-layouts.layout>
