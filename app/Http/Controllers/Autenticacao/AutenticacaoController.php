@@ -12,7 +12,7 @@ class AutenticacaoController extends Controller
      * Mostrar formulario de login
      * 
      * @param void
-     * @return view form-login
+     * @return View form-login
      */
     public function LoginCreate()
     {
@@ -23,7 +23,7 @@ class AutenticacaoController extends Controller
      * Mostrar formulario de registro
      * 
      * @param void
-     * @return view form-registro
+     * @return View form-registro
      */
     public function RegistroCreate()
     {
@@ -34,7 +34,7 @@ class AutenticacaoController extends Controller
      * Registrar novo usuario
      * 
      * @param Request $request
-     * @return view home.blade  User criado e logado
+     * @return View home.blade.php  User criado e logado
      */
     public function RegistroStore(Request $request)
     {
@@ -53,7 +53,14 @@ class AutenticacaoController extends Controller
         
     }
 
-
+    /**
+     * Sair da aplicacao
+     * 
+     * @param Request $request
+     * @return Auth Auth::logout()
+     * @return Session Invalidate
+     * @return Session RegenerateToken
+     */
     public function Logout(Request $request)
     {
         Auth::logout();
