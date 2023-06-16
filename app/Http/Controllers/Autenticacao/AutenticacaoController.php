@@ -37,7 +37,6 @@ class AutenticacaoController extends Controller
 
             return redirect()->intended('home');
         }
-
         return back()->withErrors([
             'email' => 'Email Inválido',
             'password' => 'Senha Inválida',
@@ -61,13 +60,8 @@ class AutenticacaoController extends Controller
             $criptografarSenha = Hash::make($request->password);
 
             if (Hash::check($request->passwordConfirm, $criptografarSenha)) {
-                $registrarUsuario = new Registro();
 
-                $registrarUsuario->name = $request->name;
-                $registrarUsuario->email = $request->email;
-                $registrarUsuario->password = $criptografarSenha;
-
-                $registrarUsuario->save();
+                Registro::CriarUsuario($request, $criptografarSenha);
 
                 return redirect()->route('site.home');
             }

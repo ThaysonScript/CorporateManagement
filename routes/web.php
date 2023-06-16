@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 //-----------------------------------AUTENTICACAO----------------------------------------------//
 Route::get('/registro', [AutenticacaoController::class, 'Registro'])->name('autenticacao.registro');
-Route::post('/registrando-usuario', [AutenticacaoController::class, 'RegistrandoUsuario'])->name('autenticacao.registrando-Usuario');
+Route::post('/registrando-usuario', [AutenticacaoController::class, 'RegistrandoUsuario'])->name('autenticacao.registrando-usuario');
 Route::get('/login', [AutenticacaoController::class, 'Login'])->name('autenticacao.login');
 Route::post('/logando', [AutenticacaoController::class, 'Logando'])->name('autenticacao.logando');
 Route::get('/logout', [AutenticacaoController::class, 'Logout'])->name('autenticacao.logout');

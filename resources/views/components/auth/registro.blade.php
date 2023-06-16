@@ -7,7 +7,7 @@
 
                     <h1 class="text-center mb-4">Registro</h1>
 
-                    <form action="{{ route('autenticacao.registrarUsuario') }}" method="POST">
+                    <form action="{{ route('autenticacao.registrando-usuario') }}" method="POST">
                         @csrf
                         {{-- name input --}}
                         <div class="mb-3">

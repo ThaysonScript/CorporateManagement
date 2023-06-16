@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="text-center mb-4">Login</h1>
-                    <form action="{{ route('autenticacao.loginEntrando') }}" method="POST">
+                    <form action="{{ route('autenticacao.logando') }}" method="POST">
                         @csrf
 
                         {{-- email input --}}

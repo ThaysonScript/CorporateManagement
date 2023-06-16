@@ -50,4 +50,14 @@ class Registro extends Authenticatable
     {
         return $this->belongsTo(CategoriaEstoque::class);
     }
+
+
+    public static function CriarUsuario($request, $criptografarSenha)
+    {
+        return Self::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $criptografarSenha
+        ]);
+    }
 }
