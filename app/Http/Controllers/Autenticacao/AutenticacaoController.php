@@ -3,35 +3,52 @@
 namespace App\Http\Controllers\Autenticacao;
 
 use App\Http\Controllers\Controller;
-use App\Models\Autenticacao\Registro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class AutenticacaoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar formulario de login
+     * 
+     * @param void
+     * @return view form-login
      */
-    public function Registro()
-    {
-        return view('autenticacao.registro');
-    }
-
-
-    public function Login()
+    public function LoginCreate()
     {
         return view('autenticacao.login');
     }
 
+    /**
+     * Mostrar formulario de registro
+     * 
+     * @param void
+     * @return view form-registro
+     */
+    public function RegistroCreate()
+    {
+        return view('autenticacao.registro');
+    }
 
-    public function Logando(Request $request)
+    /**
+     * Registrar novo usuario
+     * 
+     * @param Request $request
+     * @return view home.blade  User criado e logado
+     */
+    public function RegistroStore(Request $request)
     {
         
     }
 
-
-    public function RegistrandoUsuario(Request $request)
+    /**
+     * Entrar na Aplicacao
+     * 
+     * @param Request $request->email
+     * @param Request $request->password
+     * @return View home.blade.php
+     */
+    public function Login(Request $request)
     {
         
     }

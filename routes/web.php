@@ -38,11 +38,7 @@ Route::get('/produtos', [SiteController::class, 'VerProdutos'])->name('site.visu
 // cadastroCategoriaEstoque
 Route::get('/cadastrar-estoque', [CadastrosController::class, 'EstoquesIndex'])->name('cadastroEstoques.categoriaEstoque');
 Route::post('/cadastrando-estoque', [CadastrosController::class, 'EstoquesCreate'])->name('cadastroEstoques.cadastrandoEstoque');
-
-// cadastroCategoriaProduto
 Route::get('/cadastrar-categoria-produto', [CadastrosController::class, 'CategoriaProdutoIndex'])->name('cadastroEstoques.categoriaProduto');
 Route::post('/cadastrando-categoria-produto', [CadastrosController::class, 'CategoriaProdutoCreate'])->name('cadastroEstoques.cadastrandoCategoriaProduto');
-
-// cadastroProduto
 Route::get('/cadastrar-produto', [CadastrosController::class, 'ProdutoIndex'])->name('cadastroEstoques.produto');
 Route::post('/cadastrando-produto', [CadastrosController::class, 'ProdutoCreate'])->name('cadastroEstoques.cadastrandoProduto');
