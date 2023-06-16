@@ -27,46 +27,13 @@ class AutenticacaoController extends Controller
 
     public function Logando(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required']
-        ]);
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('home');
-        }
-        return back()->withErrors([
-            'email' => 'Email Inválido',
-            'password' => 'Senha Inválida',
-        ])->onlyInput('email', 'password');
+        
     }
 
 
     public function RegistrandoUsuario(Request $request)
     {
-        $validarCampos = $request->validate([
-            'name' => 'required|string|min:1|max:200',
-            'email' => 'required|email|unique:users|min:1|max:200',
-            'password' => 'required|string|min:6|max:20',
-        ]);
-
-        $EncontrarContaExistente = Registro::where('email', $request->email)->first();
-
-        if ($EncontrarContaExistente) {
-            return redirect('autenticacao.registro');
-        } else {
-            $criptografarSenha = Hash::make($request->password);
-
-            if (Hash::check($request->passwordConfirm, $criptografarSenha)) {
-
-                Registro::CriarUsuario($request, $criptografarSenha);
-
-                return redirect()->route('site.home');
-            }
-            return back()->route('autenticacao.registro')->withErrors($validarCampos);
-        }
+        
     }
 
 

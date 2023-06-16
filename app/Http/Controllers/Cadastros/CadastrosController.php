@@ -32,60 +32,17 @@ class CadastrosController extends Controller
 
     public function EstoquesCreate(Request $request)
     {
-        $encontrarEstoqueExistente = CategoriaEstoque::where('tituloCategoriaEstoque', $request->tituloCategoriaEstoque)->first();
-
-        if (!$encontrarEstoqueExistente) {
-            $cadastrandoEstoque = new CategoriaEstoque;
-
-            $cadastrandoEstoque->tituloCategoriaEstoque = $request->tituloCategoriaEstoque;
-            $cadastrandoEstoque->descricaoCategoriaEstoque = $request->descricaoCategoriaEstoque;
-            $cadastrandoEstoque->user_id = Auth::user()->id;
-
-            $cadastrandoEstoque->save();
-
-            return redirect()->route('site.home');
-        }
+        
     }
 
     public function CategoriaProdutoCreate(Request $request)
     {
-        $encontrarCategoriaProdutoExistente = CategoriaProduto::where('tituloCategoriaProduto', $request->tituloCategoriaProduto)->first();
-
-        if (!$encontrarCategoriaProdutoExistente) {
-            $cadastrandoCategoriaProduto = new CategoriaProduto();
-
-            $cadastrandoCategoriaProduto->tituloCategoriaProduto = $request->tituloCategoriaProduto;
-            $cadastrandoCategoriaProduto->descricaoCategoriaProduto = $request->descricaoCategoriaProduto;
-            $cadastrandoCategoriaProduto->fornecedorCategoriaProduto = $request->fornecedorCategoriaProduto;
-
-            $cadastrandoCategoriaProduto->user_id = Auth::user()->id;
-            $cadastrandoCategoriaProduto->categoria_estoque_id = $request->categoria_estoque_id;
-            
-            $cadastrandoCategoriaProduto->save();
-
-            return redirect()->route('site.home');
-        }
+        
     }
 
     public function ProdutoCreate(Request $request)
     {
-        $encontrarProdutoExistente = Produto::where('tituloProduto', $request->tituloProduto)->first();
-
-        if (!$encontrarProdutoExistente) {
-            $cadastrandoProduto = new Produto();
-
-            $cadastrandoProduto->tituloProduto = $request->tituloProduto;
-            $cadastrandoProduto->descricaoProduto = $request->descricaoProduto;
-            $cadastrandoProduto->quantidadeProduto = $request->quantidadeProduto;
-            $cadastrandoProduto->fornecedorProduto = $request->fornecedorProduto;
-
-            $cadastrandoProduto->user_id = Auth::user()->id;
-            $cadastrandoProduto->categoria_produto_id = $request->categoria_produto_id;
-
-            $cadastrandoProduto->save();
-
-            return redirect()->route('site.home');
-        }
+        
     }
 
 
