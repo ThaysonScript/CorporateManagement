@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="text-center mb-4">Login</h1>
-                    <form action="{{ route('autenticacao.login-entrar') }}" method="POST">
+                    <form action="{{ route('auth.login-entrar') }}" method="POST">
                         @csrf
 
                         {{-- email input --}}
@@ -37,7 +37,7 @@
                         </div>
 
                         <p class="mt-3 text-center">Ainda não possui uma conta? <a
-                                href="{{ route('autenticacao.registro-create') }}">Faça o Registro</a></p>
+                                href="{{ route('auth.registro') }}">Faça o Registro</a></p>
 
                     </form>
                 </div>

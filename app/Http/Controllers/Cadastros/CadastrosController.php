@@ -3,47 +3,112 @@
 namespace App\Http\Controllers\Cadastros;
 
 use App\Http\Controllers\Controller;
-use App\Models\CadastroEstoques\CategoriaEstoque;
-use App\Models\CadastroEstoques\CategoriaProduto;
-use App\Models\CadastroEstoques\Produto;
+use App\Models\Cadastros\Estoque;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CadastrosController extends Controller
 {
-    public function EstoquesIndex()
+    public function PaginaIndex()
     {
-        return view('cadastroEstoques.categoriaEstoque');
+        return view('site.landing-page');
     }
 
-    public function CategoriaProdutoIndex()
+    public function PaginaHomeIndex()
     {
-        $estoques = CategoriaEstoque::all()->where('user_id', $user_id = Auth::user()->id);
+        $todosEstoques = Estoque::MostrarEstoques();
+
+        return redirect()->route('site.home', compact('todosEstoques'));
+    }
+
+
+
+
+
+
+
+
+
+
+    public function EstoquesCreate()
+    {
+        return view('cadastros.estoques');
+    }
+
+    public function CategoriaCreate()
+    {
+        $estoques = Estoque::all()->where('user_id', $user_id = Auth::user()->id);
         
-        return view('cadastroEstoques.categoriaProduto', compact('estoques'));
+        return view('cadastros.produtos', compact('estoques'));
     }
 
-    public function ProdutoIndex()
+    public function ProdutoCreate()
     {
-        $produtos = CategoriaProduto::all()->where('user_id', $user_id = Auth::user()->id);
+        $produtos = Estoque::all()->where('user_id', $user_id = Auth::user()->id);
         return view('cadastroEstoques.produto', compact('produtos'));
     }
 
 
-    public function EstoquesCreate(Request $request)
+    public function EstoquesStore(Request $request)
+    {
+        Estoque::CadastrarEstoque($request);
+
+        return redirect()->route('site.home');
+    }
+
+    public function CategoriaStore(Request $request)
     {
         
     }
 
-    public function CategoriaProdutoCreate(Request $request)
+    public function ProdutoStore(Request $request)
     {
         
     }
 
-    public function ProdutoCreate(Request $request)
+
+
+
+    public function EstoquesShow()
     {
+        $estoquesTotais = Estoque::all()->where('user_id', $user_id = Auth::user()->id);
         
+        return view('site.visualizar.estoques', compact('estoquesTotais'));
     }
+
+    public function CategoriaShow()
+    {
+        $categoriaProdutoTotais = Estoque::all()->where('user_id', $user_id = Auth::user()->id);
+
+        return view('site.visualizar.categoriaProduto', compact('categoriaProdutoTotais'));
+    }
+
+    public function ProdutosShow()
+    {
+        $ProdutoTotais = Estoque::all()->where('user_id', $user_id = Auth::user()->id);
+
+        return view('site.visualizar.produtos', compact('ProdutoTotais'));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

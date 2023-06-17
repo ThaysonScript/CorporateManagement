@@ -9,10 +9,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item text-white h5 me-4 border border-light rounded">
-                        <a class="nav-link link-opacity-100" href="{{ route('autenticacao.login-create') }}">Entrar</a>
+                        <a class="nav-link link-opacity-100" href="{{ route('auth.login') }}">Entrar</a>
                     </li>
                     <li class="nav-item text-white h5 border border-light rounded ms-4">
-                        <a class="nav-link link-opacity-100" href="{{ route('autenticacao.registro-create') }}">Se Cadastre
+                        <a class="nav-link link-opacity-100" href="{{ route('auth.registro') }}">Se Cadastre
                             Agora!</a>
                     </li>
                 </ul>

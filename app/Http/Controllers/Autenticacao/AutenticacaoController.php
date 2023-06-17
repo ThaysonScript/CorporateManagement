@@ -17,7 +17,7 @@ class AutenticacaoController extends Controller
      */
     public function LoginCreate()
     {
-        return view('autenticacao.login');
+        return view('auth.login');
     }
 
     /**
@@ -28,7 +28,7 @@ class AutenticacaoController extends Controller
      */
     public function RegistroCreate()
     {
-        return view('autenticacao.registro');
+        return view('auth.registro');
     }
 
     /**

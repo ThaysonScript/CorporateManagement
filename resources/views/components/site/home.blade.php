@@ -18,7 +18,7 @@
                         <a class="nav-link" href="#">Serviços</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('autenticacao.logout') }}">Sair</a>
+                        <a class="nav-link" href="{{ route('auth.logout') }}">Sair</a>
                     </li>
                 </ul>
             </div>
@@ -39,31 +39,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div class="card mb-3">
-                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Imagem de recurso">
-                    <div class="card-body">
-                        <h5 class="card-title">Recurso 1</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+                @foreach ($todosEstoques as $estoque)
+                    <div class="card mb-3">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $estoque->titulo }}</h5>
+                            <p class="card-text">{{ $estoque->descricao }}</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-3">
-                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Imagem de recurso">
-                    <div class="card-body">
-                        <h5 class="card-title">Recurso 2</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-3">
-                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Imagem de recurso">
-                    <div class="card-body">
-                        <h5 class="card-title">Recurso 3</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </div>
