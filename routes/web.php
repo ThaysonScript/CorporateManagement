@@ -1,23 +1,8 @@
 <?php
 
-// auth
-use App\Http\Controllers\Autenticacao\RegistroController;
-use App\Http\Controllers\Autenticacao\LoginController;
-use App\Http\Controllers\Autenticacao\LogoutController;
-
-// create 
-use App\Http\Controllers\CadastroEstoques\CategoriaEstoqueController;
-use App\Http\Controllers\CadastroEstoques\CategoriaProdutoController;
-use App\Http\Controllers\CadastroEstoques\ProdutoController;
-
-// landing-page, home
+use App\Http\Controllers\Autenticacao\AutenticacaoController;
+use App\Http\Controllers\Cadastros\CadastrosController;
 use App\Http\Controllers\Site\SiteController;
-
-// site read 
-use App\Http\Controllers\Site\Visualizar\VerEstoquesController;
-use App\Http\Controllers\Site\Visualizar\VerCategoriaProdutoController;
-use App\Http\Controllers\Site\Visualizar\VerProdutoController;
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,51 +17,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 //-----------------------------------AUTENTICACAO----------------------------------------------//
-// registro
-Route::get('/registro', [RegistroController::class, 'Index'])->name('autenticacao.registro');
-Route::post('/cadastrando-registro', [RegistroController::class, 'RegistrarUsuario'])->name('autenticacao.registrarUsuario');
-
-//login
-Route::get('/login', [LoginController::class, 'Index'])->name('autenticacao.login');
-Route::post('/login-entrando', [LoginController::class, 'LoginEntrando'])->name('autenticacao.loginEntrando');
-
-//logout
-Route::get('/logout', [LogoutController::class, 'Logout'])->name('autenticacao.logout');
-
+Route::get('/registro', [AutenticacaoController::class, 'RegistroCreate'])->name('autenticacao.registro-create');
+Route::post('/registrando-usuario', [AutenticacaoController::class, 'RegistroStore'])->name('autenticacao.registro-store');
+Route::get('/login', [AutenticacaoController::class, 'LoginCreate'])->name('autenticacao.login-create');
+Route::post('/logando', [AutenticacaoController::class, 'LoginEntrar'])->name('autenticacao.login-entrar');
+Route::get('/logout', [AutenticacaoController::class, 'Logout'])->name('autenticacao.logout');
 
 
 //-----------------------------------SITE_HOME----------------------------------------------//
-// landing page
-Route::get('/', [SiteController::class, 'PaginaInicial'])->name('site.inicialPage');
+Route::get('/', [SiteController::class, 'PaginaIndex'])->name('site.inicialPage');
+Route::get('/home', [SiteController::class, 'PaginaHomeIndex'])->middleware('autenticado')->name('site.home');
 
-// home page
-Route::get('/home', [SiteController::class, 'PaginaHome'])->middleware('autenticado')->name('site.home');
-// Route::get('/Home-Estoques', [SiteController::class, 'HomeEstoques'])->middleware('autenticado')->name('site.home');
-
-
-
-//-----------------------------------SITE_READ----------------------------------------------//
-// ver estoques
-Route::get('/estoques-cadastrados', [VerEstoquesController::class, 'VerEstoques'])->name('site.visualizar.estoques');
-
-// ver categoriaProdutos
-Route::get('/categoria-produto', [VerCategoriaProdutoController::class, 'VerCategoriaProduto'])->name('site.visualizar.categoriaProduto');
-
-// ver produtos
-Route::get('/produtos', [VerProdutoController::class, 'VerProdutos'])->name('site.visualizar.produtos');
-
-
+Route::get('/estoques-cadastrados', [SiteController::class, 'VerEstoques'])->name('site.visualizar.estoques');
+Route::get('/categoria-produto', [SiteController::class, 'VerCategoriaProduto'])->name('site.visualizar.categoriaProduto');
+Route::get('/produtos', [SiteController::class, 'VerProdutos'])->name('site.visualizar.produtos');
 
 
 //-----------------------------------CADASTRO_ITEMS_ESTOQUES----------------------------------------------//
 // cadastroCategoriaEstoque
-Route::get('/cadastrar-estoque', [CategoriaEstoqueController::class, 'Index'])->name('cadastroEstoques.categoriaEstoque');
-Route::post('/cadastrando-estoque', [CategoriaEstoqueController::class, 'CadastrandoCategoriaEstoque'])->name('cadastroEstoques.cadastrandoEstoque');
-
-// cadastroCategoriaProduto
-Route::get('/cadastrar-categoria-produto', [CategoriaProdutoController::class, 'Index'])->name('cadastroEstoques.categoriaProduto');
-Route::post('/cadastrando-categoria-produto', [CategoriaProdutoController::class, 'CadastrandoCategoriaProduto'])->name('cadastroEstoques.cadastrandoCategoriaProduto');
-
-// cadastroProduto
-Route::get('/cadastrar-produto', [ProdutoController::class, 'Index'])->name('cadastroEstoques.produto');
-Route::post('/cadastrando-produto', [ProdutoController::class, 'CadastrandoProduto'])->name('cadastroEstoques.cadastrandoProduto');
+Route::get('/cadastrar-estoque', [CadastrosController::class, 'EstoquesIndex'])->name('cadastroEstoques.categoriaEstoque');
+Route::post('/cadastrando-estoque', [CadastrosController::class, 'EstoquesCreate'])->name('cadastroEstoques.cadastrandoEstoque');
+Route::get('/cadastrar-categoria-produto', [CadastrosController::class, 'CategoriaProdutoIndex'])->name('cadastroEstoques.categoriaProduto');
+Route::post('/cadastrando-categoria-produto', [CadastrosController::class, 'CategoriaProdutoCreate'])->name('cadastroEstoques.cadastrandoCategoriaProduto');
+Route::get('/cadastrar-produto', [CadastrosController::class, 'ProdutoIndex'])->name('cadastroEstoques.produto');
+Route::post('/cadastrando-produto', [CadastrosController::class, 'ProdutoCreate'])->name('cadastroEstoques.cadastrandoProduto');
