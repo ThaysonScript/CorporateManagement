@@ -17,12 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 //-----------------------------------AUTENTICACAO----------------------------------------------//
-Route::get('/registro', [AutenticacaoController::class, 'Registro'])->name('autenticacao.registro');
-Route::post('/registrando-usuario', [AutenticacaoController::class, 'RegistrandoUsuario'])->name('autenticacao.registrando-usuario');
-Route::get('/login', [AutenticacaoController::class, 'Login'])->name('autenticacao.login');
-Route::post('/logando', [AutenticacaoController::class, 'Logando'])->name('autenticacao.logando');
+Route::get('/registro', [AutenticacaoController::class, 'RegistroCreate'])->name('autenticacao.registro-create');
+Route::post('/registrando-usuario', [AutenticacaoController::class, 'RegistroStore'])->name('autenticacao.registro-store');
+Route::get('/login', [AutenticacaoController::class, 'LoginCreate'])->name('autenticacao.login-create');
+Route::post('/logando', [AutenticacaoController::class, 'LoginEntrar'])->name('autenticacao.login-entrar');
 Route::get('/logout', [AutenticacaoController::class, 'Logout'])->name('autenticacao.logout');
-
 
 
 //-----------------------------------SITE_HOME----------------------------------------------//

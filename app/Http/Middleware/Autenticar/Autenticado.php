@@ -19,6 +19,6 @@ class Autenticado
         if (Auth::check()) {
             return $next($request);
         }
-        return redirect()->route('autenticacao.login');
+        return redirect()->route('autenticacao.login-create');
     }
 }

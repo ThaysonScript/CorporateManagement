@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Autenticacao;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,10 +35,13 @@ class AutenticacaoController extends Controller
      * Registrar novo usuario
      * 
      * @param Request $request
-     * @return View home.blade.php  User criado e logado
+     * @return View home.blade.php  Usuario criado e logado
      */
     public function RegistroStore(Request $request)
     {
+        User::CriarUsuario($request);
+ 
+        return redirect()->route('site.home');
         
     }
 
@@ -48,10 +52,26 @@ class AutenticacaoController extends Controller
      * @param Request $request->password
      * @return View home.blade.php
      */
-    public function Login(Request $request)
+    public function LoginEntrar(Request $request)
     {
-        
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+
+
+        if(Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('home');
+        }
+        return back()->withErrors([
+            'email' => 'Email não cadastrado.',
+            'password' => 'Senha incorreta',
+        ])->onlyInput('email', 'password');
     }
+
 
     /**
      * Sair da aplicacao

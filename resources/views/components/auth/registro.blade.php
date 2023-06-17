@@ -7,7 +7,7 @@
 
                     <h1 class="text-center mb-4">Registro</h1>
 
-                    <form action="{{ route('autenticacao.registrando-usuario') }}" method="POST">
+                    <form action="{{ route('autenticacao.registro-store') }}" method="POST">
                         @csrf
                         {{-- name input --}}
                         <div class="mb-3">
@@ -45,7 +45,7 @@
                         </div>
 
                         <p class="mt-3 text-center">Já possui uma conta? <a
-                                href="{{ route('autenticacao.login') }}">Faça login</a></p>
+                                href="{{ route('autenticacao.login-create') }}">Faça login</a></p>
                     </form>
 
                 </div>
