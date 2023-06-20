@@ -26,7 +26,7 @@ class Estoque extends Model
     public static function CadastrarEstoque(Request $dados)
     {
         return Self::create([
-            'user_id' => Auth::user()->id,
+            'user_id' => Auth::id(),
             'titulo' => $dados->titulo,
             'descricao' => $dados->descricao,
         ]);

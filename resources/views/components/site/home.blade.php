@@ -38,19 +38,17 @@
 <section class="features">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-
-                @foreach ($todosEstoques as $estoque)
+            @foreach ($estoques as $estoque)
+                <div class="col-md-4">
                     <div class="card mb-3">
-                        
                         <div class="card-body">
                             <h5 class="card-title">{{ $estoque->titulo }}</h5>
                             <p class="card-text">{{ $estoque->descricao }}</p>
+                            <a href="{{ route('site.mostrar.estoques', ['estoqueId', $estoque->id]) }}" class="btn btn-primary">Saiba mais {{ $estoque->id }}</a>
                         </div>
                     </div>
-                @endforeach
-
-            </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>

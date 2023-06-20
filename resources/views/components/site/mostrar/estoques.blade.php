@@ -1,11 +1,3 @@
-@extends('layouts.geral.layoutGeral')
-
-@section('titulo-pagina')
-    Estoques
-@endsection
-
-@section('conteudo-pagina')
-
 <h1 class="text-center">Estoques</h1>
 <div class="container d-flex justify-content-center text-center column">
     
@@ -20,5 +12,3 @@
     </div>
     @endforeach
 </div>
-
-@endsection

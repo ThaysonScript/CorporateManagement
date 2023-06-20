@@ -48,8 +48,7 @@ class AutenticacaoController extends Controller
     /**
      * Entrar na Aplicacao
      * 
-     * @param Request $request->email
-     * @param Request $request->password
+     * @param Request $request
      * @return View home.blade.php
      */
     public function LoginEntrar(Request $request)
@@ -59,12 +58,12 @@ class AutenticacaoController extends Controller
             'password' => ['required'],
         ]);
 
-
-
-        if(Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('home');
+        if(!(User::VerificarUserCadastrado($request->email)) && $request->password == $request->passwordConfirm) {
+                if(Auth::attempt($credentials)) {
+                    $request->session()->regenerate();
+        
+                    return redirect()->intended('home');
+                }
         }
         return back()->withErrors([
             'email' => 'Email não cadastrado.',

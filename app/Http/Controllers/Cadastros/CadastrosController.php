@@ -16,17 +16,10 @@ class CadastrosController extends Controller
 
     public function PaginaHomeIndex()
     {
-        $todosEstoques = Estoque::MostrarEstoques();
+        $estoques = Estoque::MostrarEstoques();
 
-        return redirect()->route('site.home', compact('todosEstoques'));
+        return view('site.home', compact('estoques'));
     }
-
-
-
-
-
-
-
 
 
 

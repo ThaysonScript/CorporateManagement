@@ -10,12 +10,14 @@ use Illuminate\View\Component;
 class home extends Component
 {
     public $usuarioLogado;
+    public $estoques;
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($estoques)
     {
-        return $this->usuarioLogado = Auth::user()->name;
+        $this->usuarioLogado = Auth::user()->name;
+        $this->estoques = $estoques;
     }
 
     /**

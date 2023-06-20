@@ -54,11 +54,17 @@ class User extends Authenticatable
 
     public static function CriarUsuario(Request $request)
     {
+        $userHash = Hash::make($request->password);
 
         return Self::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => $userHash,
         ]);
+    }
+
+    public static function VerificarUserCadastrado($email)
+    {
+        return Self::where('email', $email)->first();
     }
 }

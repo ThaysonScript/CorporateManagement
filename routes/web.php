@@ -28,9 +28,9 @@ Route::get('/logout', [AutenticacaoController::class, 'Logout'])->name('auth.log
 Route::get('/', [CadastrosController::class, 'PaginaIndex'])->name('site.inicialPage');
 Route::get('/home', [CadastrosController::class, 'PaginaHomeIndex'])->middleware('autenticado')->name('site.home');
 
-Route::get('/estoques-cadastrados', [CadastrosController::class, 'VerEstoques'])->name('site.visualizar.estoques');
-Route::get('/categoria-produto', [CadastrosController::class, 'VerCategoriaProduto'])->name('site.visualizar.categoriaProduto');
-Route::get('/produtos', [CadastrosController::class, 'VerProdutos'])->name('site.visualizar.produtos');
+Route::get('/estoque-de-{estoque}', [CadastrosController::class, 'EstoquesShow'])->name('site.mostrar.estoques');
+Route::get('/categoria-produto', [CadastrosController::class, 'VerCategoriaProduto'])->name('site.mostrar.categoriaProduto');
+Route::get('/produtos', [CadastrosController::class, 'VerProdutos'])->name('site.mostrar.produtos');
 
 
 
