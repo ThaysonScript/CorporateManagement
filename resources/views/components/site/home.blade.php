@@ -1,5 +1,8 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        {{-- <x-layouts.menus.menu></x-layouts.menus.menu> --}}
+
         <div class="container">
             <a class="navbar-brand" href="#">Seja bem vindo {{ $usuarioLogado }}!</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -15,7 +18,7 @@
                         <a class="nav-link" href="#">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Serviços</a>
+                        <a class="nav-link" href="{{ route('cadastros.estoques') }}">Cadastre Estoque</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('auth.logout') }}">Sair</a>
@@ -26,41 +29,33 @@
     </nav>
 </header>
 
-<section class="hero">
+<main class="hero">
+
     <div class="container text-center">
-        <h1 class="display-4">Bem-vindo à nossa Página Inicial</h1>
-
-        {{--  --}}
-
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rhoncus fringilla lectus, eu
-            condimentum ex tincidunt at.</p>
-        <a href="#" class="btn btn-primary btn-lg">Saiba Mais</a>
-
-        {{--  --}}
-
-    </div>
-</section>
-
-<section class="features">
-    <div class="container">
-        <div class="row">
-            @foreach ($estoques as $estoque)
-                <div class="col-md-4">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $estoque->titulo }}</h5>
-                            <p class="card-text">{{ $estoque->descricao }}</p>
-                            <a href="{{ route('site.mostrar.estoques', ['estoqueId', $estoque->id]) }}" class="btn btn-primary">Saiba mais {{ $estoque->id }}</a>
-                        </div>
+        @if ($estoques->count() === 0)
+            <p class="lead">Sem estoques</p>
+            <a href="{{ route('cadastros.estoques') }}" class="btn btn-primary btn-lg">Click para cadastrar um estoque</a>
+        @else
+            <h1 class="display-4">Você tem {{ $estoques->count() }} estoque</h1>
+            <section class="features">
+                <div class="container">
+                    <div class="row">
+                        @foreach ($estoques as $estoque)
+                            <div class="col-md-4">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $estoque->titulo }}</h5>
+                                        <p class="card-text">{{ $estoque->descricao }}</p>
+                                        <a href="{{ route('site.mostrar.estoques', ['estoqueId', $estoque->id]) }}" 
+                                            class="btn btn-primary">Saiba mais {{ $estoque->id }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-            @endforeach
-        </div>
-    </div>
-</section>
+            </section>
+        @endif
 
-<footer class="bg-dark text-white text-center py-3">
-    <div class="container">
-        <p>&copy; 2023 Todos os direitos reservados</p>
     </div>
-</footer>
+</main>
