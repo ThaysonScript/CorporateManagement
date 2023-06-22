@@ -23,7 +23,6 @@ Route::post('/logando', [AutenticacaoController::class, 'LoginEntrar'])->name('a
 Route::get('/logout', [AutenticacaoController::class, 'Logout'])->name('auth.logout');
 
 
-
 //-----------------------------------SITE_HOME----------------------------------------------//
 Route::get('/', [CadastrosController::class, 'PaginaIndex'])->name('site.inicialPage');
 Route::get('/home', [CadastrosController::class, 'PaginaHomeIndex'])->middleware('autenticado')->name('site.home');

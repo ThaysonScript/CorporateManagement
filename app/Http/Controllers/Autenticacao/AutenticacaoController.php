@@ -39,9 +39,11 @@ class AutenticacaoController extends Controller
      */
     public function RegistroStore(Request $request)
     {
-        User::CriarUsuario($request);
- 
-        return redirect()->route('site.home');
+        if(!(User::VerificarUserCadastrado($request->email)) && $request->password == $request->passwordConfirm) {
+            User::CriarUsuario($request);
+            
+            return redirect()->route('site.home');
+        }
         
     }
 
@@ -57,13 +59,11 @@ class AutenticacaoController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-
-        if(!(User::VerificarUserCadastrado($request->email)) && $request->password == $request->passwordConfirm) {
-                if(Auth::attempt($credentials)) {
-                    $request->session()->regenerate();
         
-                    return redirect()->intended('home');
-                }
+        if(Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('home');
         }
         return back()->withErrors([
             'email' => 'Email não cadastrado.',
