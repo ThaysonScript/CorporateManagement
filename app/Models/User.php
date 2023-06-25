@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     public function Estoques()
     {
-        $this->hasMany(Estoque::class);
+        return $this->hasMany(Estoque::class);
     }
     
 

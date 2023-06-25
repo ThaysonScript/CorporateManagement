@@ -20,7 +20,7 @@ class Estoque extends Model
 
     public function Usuario()
     {
-        $this->belongsTo(User::class, 'user_id', 'id');
+        $this->belongsTo(User::class);
     }
 
     public static function CadastrarEstoque(Request $dados)
@@ -32,8 +32,8 @@ class Estoque extends Model
         ]);
     }
 
-    public static function MostrarEstoques()
-    {
-        return Self::all()->where('user_id', Auth::id());
-    }
+    // public static function MostrarEstoques()
+    // {
+    //     return Self::all()->where('user_id', Auth::id());
+    // }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Cadastros;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cadastros\Estoque;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,13 @@ class CadastrosController extends Controller
 
     public function PaginaHomeIndex()
     {
-        $estoques = Estoque::MostrarEstoques();
+        $user = User::find(Auth::id());
+
+        $estoques = $user->Estoques;
+
+        // dd($estoques);
+
+        // $estoques::all()->where($user);
 
         return view('site.home', compact('estoques'));
     }
