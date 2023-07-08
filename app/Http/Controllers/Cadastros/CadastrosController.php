@@ -24,6 +24,8 @@ class CadastrosController extends Controller
         return view('site.home', compact('estoques'));
     }
 
+    
+
     public function EstoquesCreate()
     {
         return view('cadastros.estoques');
