@@ -23,6 +23,11 @@ class Estoque extends Model
         $this->belongsTo(User::class);
     }
 
+    public function Categoria()
+    {
+        return $this->hasMany(Categoria::class);
+    }
+
     public static function CadastrarEstoque(Request $dados)
     {
         return Self::create([
