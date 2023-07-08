@@ -21,10 +21,6 @@ class CadastrosController extends Controller
 
         $estoques = $user->Estoques;
 
-        // dd($estoques);
-
-        // $estoques::all()->where($user);
-
         return view('site.home', compact('estoques'));
     }
 
