@@ -7,29 +7,29 @@
                 <form action="{{ route('cadastros.categorias-store') }}" method="POST">
 
                     @csrf
-                    <label for="tituloCategoriaProduto">Nome da Categoria do Produto:</label>
+                    <label for="tituloCategoria">Nome da Categoria:</label>
                     <br>
-                    <input type="text" name="tituloCategoriaProduto" id="tituloCategoriaProduto"
-                        placeholder="Nome da Categoria do Produto">
+                    <input type="text" name="tituloCategoria" id="tituloCategoria"
+                        placeholder="Nome da Categoria">
                     <br><br>
 
-                    <label for="descricaoCategoriaProduto">Descrição da Categoria do Produto:</label>
+                    <label for="descricaoCategoria">Descrição da Categoria:</label>
                     <br>
-                    <textarea name="descricaoCategoriaProduto" id="descricaoCategoriaProduto" cols="30" rows="10"></textarea>
+                    <textarea name="descricaoCategoria" id="descricaoCategoria" cols="30" rows="10"></textarea>
                     <br><br>
 
                     <div class="form-group">
-                        <select name="categoria_estoque_id" id="categoria_estoque_id" class="form-control text-center">
-                            <label for="categoria_estoque_id">Categoria do Estoque:</label>
+                        <select name="estoques_id" id="estoques_id" class="form-control text-center">
+                            <label for="estoques_id">Categoria do Estoque:</label>
                             @foreach ($estoques as $estoque)
                                 {{-- escolhe o id do estoque pelo nome do estoque e salva no categoria_estoque_id do select que é passado pro controller --}}
-                                <option value="{{ $estoque->id }}">{{ $estoque->tituloCategoriaEstoque }}</option>
+                                <option value="{{ $estoque->id }}">{{ $estoque->titulo }}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <br><br>
-                    <button type="submit">Cadastrar a Categoria do Produto</button>
+                    <button type="submit">Cadastrar a Categoria</button>
 
                 </form>
             </div>

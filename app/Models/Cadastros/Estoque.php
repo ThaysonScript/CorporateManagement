@@ -23,6 +23,11 @@ class Estoque extends Model
         $this->belongsTo(User::class);
     }
 
+    public function Categoria()
+    {
+        return $this->hasMany(Categoria::class);
+    }
+
     public static function CadastrarEstoque(Request $dados)
     {
         return Self::create([
@@ -32,8 +37,8 @@ class Estoque extends Model
         ]);
     }
 
-    // public static function MostrarEstoques()
-    // {
-    //     return Self::all()->where('user_id', Auth::id());
-    // }
+    public static function MostrarEstoques()
+    {
+        return Self::all()->where('user_id', Auth::id());
+    }
 }

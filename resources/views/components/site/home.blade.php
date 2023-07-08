@@ -1,8 +1,6 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-        {{-- <x-layouts.menus.menu></x-layouts.menus.menu> --}}
-
         <div class="container">
             <a class="navbar-brand" href="#">Seja bem vindo {{ $usuarioLogado }}!</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -27,6 +25,7 @@
             </div>
         </div>
     </nav>
+    <x-layouts.menus.menu></x-layouts.menus.menu>
 </header>
 
 <main class="hero">
@@ -36,7 +35,7 @@
             <p class="lead">Sem estoques</p>
             <a href="{{ route('cadastros.estoques') }}" class="btn btn-primary btn-lg">Click para cadastrar um estoque</a>
         @else
-            <h1 class="display-4">Você tem {{ $estoques->count() }} estoque</h1>
+            <h1 class="display-4">Você tem {{ $estoques->count() }} estoque(s)</h1>
             <section class="features">
                 <div class="container">
                     <div class="row">

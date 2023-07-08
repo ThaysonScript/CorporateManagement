@@ -1,181 +1,141 @@
 # Laravel Inventory Management System
->Este projeto é uma aplicação web desenvolvida em Laravel que permite gerenciar o estoque de um comércio. 
+>This project is a web application developed in Laravel that allows you to manage the inventory of a store.
 >
->Com ela, é possível cadastrar produtos, fornecedores, clientes e controlar as entradas e saídas de estoque.
+>With it, you can register products, suppliers, customers, and control stock in and out.
 
-# Instalar e rodar o projeto
-Rodar o Gerenciador de Estoque em sua máquina local é uma tarefa extremamente simples.
+# Install and Run the Project
+Running the Inventory Manager on your local machine is an extremely simple task.
 
-## Dependências Globais
-Você precisa ter três principais dependências instaladas:
+## Global Dependencies
+You need to have three main dependencies installed:
 
 - PHP 8.x
-- Servidor web, geralmente (Apache - Nginx)
-- Banco de dados relacional, geralmente (Mysql - PostgreSql)
+- Web server, usually (Apache - Nginx)
+- Relational database, usually (Mysql - PostgreSql)
 
-### Instalando um ambiente rápido
-Os serviços aqui listados baixam e instalam as dependências acima:
+## Installing a Quick Environment
+The listed services download and install the above dependencies:
 - xampp
-- laragon (baixe individualmente o php 8.x e configure na aplicação)
+- laragon (individually download PHP 8.x and configure it in the application)
 
-
-## Dependências Locais
-Então, após baixar o repositório `git clone`, não se esqueça de instalar as dependências locais do projeto:
+# Local Dependencies
+So, after cloning the repository `git clone`, don't forget to install the project's local dependencies:
 ```
 composer install
 ```
 
-## Configure o seu banco de dados
+## Configure your database
+Create a `.env` file at the root of the project, copying the content from the `.env.example` file
 
-- Crie um arquivo `.env` na raiz do projeto, copiando o conteúdo do arquivo `.env.example`
-
-
-- Configure a conexão com o seu banco de dados de preferência
+- Configure the connection to your preferred database
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=GerenciarEstoque-Laravel
-DB_USERNAME=configurar-usuario-proprio
-DB_PASSWORD=configurar-senha-propria
+DB_DATABASE=InventoryManager-Laravel
+DB_USERNAME=configure-your-own-username
+DB_PASSWORD=configure-your-own-password
 ```
 
-# Configuração de ambiente seguro
+# Secure Environment Configuration
+- The application uses sensitive information, such as the application's encryption key and the database connection information.
 
-- A aplicação utiliza informações sensíveis, como a chave de criptografia da aplicação e as informações de conexão com o banco de dados.
+- You can configure these variables in the `.env` file by creating your own database, user, and password.
 
-- Você pode configurar essas variáveis no arquivo `.env` criando o seu próprio DB, usuário e senha.
-
-- Para gerar a chave de criptografia, execute o comando:
+- To generate the encryption key, run the command:
 ```
 php artisan key:generate
 ```
-
-
-## Execute as migrações do banco de dados com
+- Run the database migrations with
 ```
 php artisan migrate
 ```
 
-## Deseja configurar um host personalizado?
-Você pode configurar um host personalizado para o seu ambiente:
-
-crie um novo arquivo .conf no servidor/conf/example.conf
+## Do you want to configure a custom host?
+- You can configure a custom host for your environment:
+create a new `.conf` file in `server/conf/example.conf`
 ```
 <VirtualHost *:80>
-    ServerName seuhost.local
-    DocumentRoot /caminho/para/o/diretorio
-
-    <Directory /caminho/para/o/diretorio>
+    ServerName yourhost.local
+    DocumentRoot /path/to/directory
+    <Directory /path/to/directory>
         Options Indexes FollowSymLinks
         AllowOverride All
         Require all granted
     </Directory>
-
 </VirtualHost>
 ```
 
-- ServerName = 'nome do host';
-- DocumentRoot = 'apontamento raiz do projeto - configure para apontar para a pasta public do laravel';
-- Directory /caminho/para/o/diretorio = 'aponte para a pasta public do seu app laravel';
+- ServerName = 'host name';
+- DocumentRoot = 'root project directory - configure to point to the public folder of Laravel';
+- Directory /path/to/directory = 'point to the public folder of your Laravel app';
 
-### Se tiver no Linux ative o host personalizado com
-`sudo a2ensite meuhost.conf`
+- If you are on Linux, enable the custom host with
+`sudo a2ensite myhost.conf`
 
-### Se tiver no Windows ative o host personalizado no arquivo httpd.conf com
-`Include "C:/caminho/para/o/seuhost.conf"`
+- If you are on Windows, enable the custom host in the httpd.conf file with
+`Include "C:/path/to/yourhost.conf"`
 
-### Opcionalmente adicione o host a sua maquina para que seja reconhecido pelo nome definido
-`127.0.0.1    seuhost.local`
+- Optionally, add the host to your machine so that it is recognized by the defined name
+`127.0.0.1 yourhost.local`
 
-- Windows: C:\Windows\System32\drivers\etc\hosts
-- Linux: /etc/hosts
+- Windows: `C:\Windows\System32\drivers\etc\hosts`
+- Linux: `/etc/hosts`
 
+## Start the application in development mode with
+Start your local server and database and type in the project's root:
+`php artisan serve`
 
-## Inicie a aplicação em modo de desenvolvimento com
-Inicie seu servidor local e banco de dados e digite na raiz do projeto:
-```
-php artisan serve
-```
-ou, caso host configurado digite a url do seu host no servidor, exemplo
-```
-GerenciadorEstoque.com
-```
+or, if a host is configured, enter the URL of your host on the server, for example,
+`InventoryManager.com`
 
+# Technologies Used in the Application
+- Laravel as the PHP framework;
+- Bootstrap 5 for the interface design;
+- MySQL as the relational database.
 
-# Tecnologias utilizadas na Aplicação
-
-- Laravel como framework PHP;
-
-- Bootstrap 5 para o design de interface;
-
-- MySQL como banco de dados relacional.
-
-
-# Requisitos do sistema
-
-- PHP 8.1 ou superior;
-
+# System Requirements
+- PHP 8.1 or higher;
 - Laravel 10x;
+- Apache or Nginx web server;
+- MySQL 5.7 or higher.
 
-- Servidor web Apache ou Nginx;
+# Features
+- [x] User registration with information such as name, email, and password;
 
-- MySQL 5.7 ou superior.
+- [ ] Product registration with information such as name, description, price, stock quantity, and category;
 
+- [ ] Supplier registration with information such as name, address, phone number, and email;
 
-# Funcionalidades
+- [ ] Recording of product entries and exits in the inventory;
 
-[] Cadastro de usuários com informações como: nome, e-mail e senha;
+- [ ] Reports on products in stock, best-selling products, and most used suppliers.
 
-[] Cadastro de produtos com informações como: nome, descrição, preço, quantidade em estoque e categoria;
+# Contributing
+## Contributions are welcome!
+To contribute to this project, follow these steps:
+- Create a fork of the repository.
+- Create a branch with your changes
+```git checkout -b my-new-feature```
 
-[] Cadastro de fornecedores com informações como: nome, endereço, telefone e e-mail;
+- Commit your changes
+```git commit -am 'Add some feature'```
 
-[] Registro de entrada e saída de produtos no estoque;
+- Push to your branch
+```git push origin my-new-feature```
 
-[] Relatórios de produtos em estoque, produtos mais vendidos e fornecedores mais utilizados.
+- Create a new Pull Request.
+  
+# Conclusion
+>This is a simple yet complete project for managing the inventory of a store.
+>With it, you can register products, suppliers, and customers, as well as control stock in and out.
+>We hope this project can be useful for those who need a simple and easy-to-use inventory management solution.
+>If you have any questions or suggestions, feel free to contact us or contribute to the project.
 
+# License
+This project is licensed under the `MIT License` - see the [LICENSE](https://github.com/ThaysonScript/GerenciarEstoque-Laravel/blob/main/LICENSE) file for more details.
 
-# Contribuindo
-
-## Contribuições são bem-vindas!
-
-Para contribuir com este projeto, siga as seguintes etapas:
-
-- Crie um fork do repositório.
-
-- Crie uma branch com suas alterações 
-```
-git checkout -b my-new-feature
-```
-
-- Faça o commit das suas alterações
-```
-git commit -am 'Add some feature'
-```
-
-- Faça o push para a sua branch 
-```
-git push origin my-new-feature
-```
-
-- Crie um novo Pull Request.
-
-
-# Conclusão
-
-Este é um projeto simples, mas completo, para gerenciar o estoque de um comércio.
-Com ele, é possível cadastrar produtos, fornecedores e clientes, além de controlar as entradas e saídas de estoque. 
-Esperamos que este projeto possa ser útil para quem precisa de uma solução de gerenciamento de estoque simples e fácil de usar. 
-Se tiver alguma dúvida ou sugestão, fique à vontade para entrar em contato conosco ou contribuir com o projeto.
-
-
-# Licença
-
-Este projeto está licenciado sob a [Licença MIT](https://github.com/ThaysonScript/GerenciarEstoque-Laravel/blob/31b9d564bb55b0dff41ff6555412ffc56cd51e73/LICENSE) - veja o arquivo `LICENSE` para mais detalhes.
-
-## Contribuidores
-
+# Contributors
 <a href="https://github.com/ThaysonScript/GerenciadorEstoque-Laravel/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=ThaysonScript/GerenciadorEstoque-Laravel&max=500" alt="Lista de contribuidores" width="100%"/>
+  <img src="https://contributors-img.web.app/image?repo=ThaysonScript/GerenciadorEstoque-Laravel&max=500" alt="List of contributors" width="100%"/>
 </a>

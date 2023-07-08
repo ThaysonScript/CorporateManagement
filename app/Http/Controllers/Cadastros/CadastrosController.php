@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Cadastros;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cadastros\Categoria;
 use App\Models\Cadastros\Estoque;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,12 +22,10 @@ class CadastrosController extends Controller
 
         $estoques = $user->Estoques;
 
-        // dd($estoques);
-
-        // $estoques::all()->where($user);
-
         return view('site.home', compact('estoques'));
     }
+
+    
 
     public function EstoquesCreate()
     {
@@ -35,9 +34,9 @@ class CadastrosController extends Controller
 
     public function CategoriaCreate()
     {
-        $estoques = Estoque::all()->where('user_id', $user_id = Auth::user()->id);
+        $estoques = Estoque::all()->where('user_id', $user_id = Auth::id());
         
-        return view('cadastros.produtos', compact('estoques'));
+        return view('cadastros.categorias', compact('estoques'));
     }
 
     public function ProdutoCreate()
@@ -56,7 +55,9 @@ class CadastrosController extends Controller
 
     public function CategoriaStore(Request $request)
     {
-        
+        Categoria::CriarCategoria($request);
+
+        return redirect()->route('site.home');
     }
 
     public function ProdutoStore(Request $request)

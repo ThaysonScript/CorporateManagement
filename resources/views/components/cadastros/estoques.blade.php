@@ -1,3 +1,5 @@
+<x-layouts.menus.menu></x-layouts.menus.menu>
+
 <div class="d-flex justify-content-center text-center">
     <div class="row">
         <h1>Cadastre um Estoque</h1>
