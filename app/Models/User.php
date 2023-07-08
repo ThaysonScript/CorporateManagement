@@ -65,9 +65,6 @@ class User extends Authenticatable
 
     public static function VerificarUserCadastrado($email)
     {
-        if($email == '') {
-            return dd("erro");
-        }
         return Self::where('email', $email)->first();
     }
 }
