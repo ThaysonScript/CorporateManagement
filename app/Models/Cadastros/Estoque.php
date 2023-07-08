@@ -32,8 +32,8 @@ class Estoque extends Model
         ]);
     }
 
-    // public static function MostrarEstoques()
-    // {
-    //     return Self::all()->where('user_id', Auth::id());
-    // }
+    public static function MostrarEstoques()
+    {
+        return Self::all()->where('user_id', Auth::id());
+    }
 }
