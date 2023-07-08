@@ -7,15 +7,15 @@
                 <form action="{{ route('cadastros.categorias-store') }}" method="POST">
 
                     @csrf
-                    <label for="tituloCategoriaProduto">Nome da Categoria do Produto:</label>
+                    <label for="tituloCategoria">Nome da Categoria do Produto:</label>
                     <br>
-                    <input type="text" name="tituloCategoriaProduto" id="tituloCategoriaProduto"
-                        placeholder="Nome da Categoria do Produto">
+                    <input type="text" name="tituloCategoria" id="tituloCategoria"
+                        placeholder="Nome da Categoria">
                     <br><br>
 
-                    <label for="descricaoCategoriaProduto">Descrição da Categoria do Produto:</label>
+                    <label for="descricaoCategoria">Descrição da Categoria do Produto:</label>
                     <br>
-                    <textarea name="descricaoCategoriaProduto" id="descricaoCategoriaProduto" cols="30" rows="10"></textarea>
+                    <textarea name="descricaoCategoria" id="descricaoCategoria" cols="30" rows="10"></textarea>
                     <br><br>
 
                     <div class="form-group">
@@ -29,7 +29,7 @@
                     </div>
 
                     <br><br>
-                    <button type="submit">Cadastrar a Categoria do Produto</button>
+                    <button type="submit">Cadastrar a Categoria</button>
 
                 </form>
             </div>
