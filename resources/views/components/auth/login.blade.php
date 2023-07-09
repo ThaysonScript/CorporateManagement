@@ -19,15 +19,16 @@
 
                         {{-- email input --}}
                         <div class="mb-3">
-                            <label for="email" class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail"
-                                name="email">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" 
+                            placeholder="Digite seu e-mail" name="email">
                         </div>
 
                         {{-- password input --}}
                         <div class="mb-3">
                             <label for="password" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="password" placeholder="Digite sua senha"
+                            <input type="password" class="form-control" id="password" 
+                            placeholder="Digite sua senha"
                                 name="password">
                         </div>
 
@@ -37,7 +38,8 @@
                         </div>
 
                         <p class="mt-3 text-center">Ainda não possui uma conta? <a
-                                href="{{ route('auth.registro') }}">Faça o Registro</a></p>
+                            href="{{ route('auth.registro') }}">Faça o Registro</a>
+                        </p>
 
                     </form>
                 </div>

@@ -22,5 +22,4 @@ require __DIR__ . '/routesAplication/siteRoutes.php';
 
 
 //-----------------------------------CADASTRO_ITEMS_ESTOQUES----------------------------------------------//
-// cadastroCategoriaEstoque
 require __DIR__ . '/routesAplication/cadastroRoutes.php';
