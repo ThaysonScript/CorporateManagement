@@ -1,20 +1,21 @@
 <?php
 
-namespace App\View\Components\Cadastros;
+namespace App\View\Components\layouts\menus;
 
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
-class Produtos extends Component
+class navegacao extends Component
 {
-    public $categorias;
+    public $usuarioLogado;
     /**
      * Create a new component instance.
      */
-    public function __construct($categorias)
+    public function __construct()
     {
-        $this->categorias = $categorias;
+        $this->usuarioLogado = Auth::user()->name;
     }
 
     /**
@@ -22,6 +23,6 @@ class Produtos extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.cadastros.produtos');
+        return view('components.layouts.menus.navegacao');
     }
 }

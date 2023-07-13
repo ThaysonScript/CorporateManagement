@@ -16,7 +16,7 @@ class CategoriaController extends Controller
         
         return view('cadastros.categorias', compact('estoques'));
     }
-
+    
 
     public function CategoriaStore(Request $request)
     {

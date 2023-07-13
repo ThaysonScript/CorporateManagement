@@ -16,5 +16,5 @@ Route::middleware('autenticado')->group(function() {
 
     Route::get('/home/cadastro/produto', [ProdutoController::class, 'ProdutoCreate'])->name('cadastros.produtos');
     Route::post('home/cadastrando/produto', [ProdutoController::class, 'ProdutoStore'])->name('cadastros.produtos-store');
-    Route::get('home/produtos-de-{item}', [ProdutoController::class, 'VerProdutos'])->name('site.mostrar.produtos');
+    Route::get('home/produtos-de-{item}', [ProdutoController::class, 'ProdutosShow'])->name('site.mostrar.produtos');
 });

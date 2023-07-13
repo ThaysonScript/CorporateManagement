@@ -1,20 +1,20 @@
 <?php
 
-namespace App\View\Components\Cadastros;
+namespace App\View\Components\site\mostrar;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Produtos extends Component
+class produtos extends Component
 {
-    public $categorias;
+    public $produtos;
     /**
      * Create a new component instance.
      */
-    public function __construct($categorias)
+    public function __construct($produtos)
     {
-        $this->categorias = $categorias;
+        $this->produtos = $produtos;
     }
 
     /**
@@ -22,6 +22,6 @@ class Produtos extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.cadastros.produtos');
+        return view('components.site.mostrar.produtos');
     }
 }

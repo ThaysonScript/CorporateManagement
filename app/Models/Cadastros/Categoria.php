@@ -22,6 +22,11 @@ class Categoria extends Model
         return $this->belongsTo(Estoque::class);
     }
 
+    public function Produto()
+    {
+        return $this->hasMany(Produto::class);
+    }
+
     public static function CriarCategoria(Request $dados)
     {
         return Self::create([
@@ -32,3 +37,4 @@ class Categoria extends Model
         ]);
     }
 }
+

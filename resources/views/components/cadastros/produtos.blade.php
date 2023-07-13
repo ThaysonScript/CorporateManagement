@@ -1,45 +1,48 @@
-<div class="d-flex justify-content-center text-center">
-    <div class="row">
-        <h1>Cadastre Um Produto</h1>
+<header class="bg-dark text-white text-center">
+    <div class="container py-2">
+        <h1 class="display-4">Controle sua Regra de Negócio</h1>
+        <p class="lead">Adicione um Novo Produto</p>
+    </div>
+</header>
 
-        <div class="card text-center mb-3">
-            <div class="card-body">
-                <form action="{{ route('cadastros.produtos-store') }}" method="POST">
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="bg-light p-4 rounded shadow text-center">
+                    <h2 class="mb-4">Cadastre um Produto</h2>
+                    <form action="{{ route('cadastros.produtos-store') }}" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <input type="text" name="tituloProduto" id="tituloProduto" class="form-control"
+                                placeholder="Nome do Produto">
+                        </div>
 
-                    @csrf
-                    <label for="tituloProduto">Nome do Produto:</label>
-                    <br>
-                    <input type="text" name="tituloProduto" id="tituloProduto" placeholder="Nome do Produto">
-                    <br><br>
+                        <div class="mb-3">
+                            <textarea name="descricaoProduto" id="descricaoProduto" 
+                            class="form-control" cols="30" rows="4" placeholder="Descrição do Produto"></textarea>
+                        </div>
 
-                    <label for="descricaoProduto">Descrição do Produto:</label>
-                    <br>
-                    <textarea name="descricaoProduto" id="descricaoProduto" cols="30" rows="10"></textarea>
-                    <br><br>
+                        <div class="mb-3">
+                            <label for="categorias_id">Tipo de Categoria</label>
+                            <select name="categorias_id" id="categorias_id" class="form-control">
+                                @foreach ($categorias as $categoria)
+                                    <option value="{{ $categoria->id }}">{{ $categoria->tituloCategoria }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
-                    <input type="number" name="quantidadeProduto" id="quantidadeProduto"
-                        placeholder="quantidade de Produtos">
-                    <br><br>
-
-                    <input type="text" name="fornecedorProduto" id="fornecedorProduto"
-                        placeholder="fornecedor do Produto">
-                    <br><br>
-
-                    <div class="form-group">
-                        <select name="categoria_produto_id" id="categoria_estoque_id" class="form-control text-center">
-                            <label for="categoria_produto_id">Categoria do Produto:</label>
-                            @foreach ($produtos as $produto)
-                                {{-- escolhe o id do estoque pelo nome do estoque e salva no categoria_estoque_id do select que é passado pro controller --}}
-                                <option value="{{ $produto->id }}">{{ $produto->tituloCategoriaProduto }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <br><br>
-                    <button type="submit">Cadastrar o Produto</button>
-
-                </form>
+                        <button type="submit" class="btn btn-primary btn-lg">Salvar Produto</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    </div>
+</section>
+
+<footer class="bg-dark text-white py-2">
+    <div class="container text-center">
+        <p>© 2023 CorpManager. All rights reserved.</p>
+    </div>
+</footer>
