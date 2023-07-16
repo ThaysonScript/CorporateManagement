@@ -13,13 +13,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
+                            <a class="nav-link" href="{{ route('site.home') }}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Sobre</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cadastros.estoques') }}">Cadastre Estoque</a>
+                            <a href="{{ route('cadastros.estoques') }}" class="nav-link">Cadastre Estoque</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('cadastros.categorias') }}" class="nav-link">Cadastre Categoria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('cadastros.produtos') }}" class="nav-link">Cadastre Produto</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('auth.logout') }}">Sair</a>
