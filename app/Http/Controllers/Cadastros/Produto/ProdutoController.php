@@ -13,8 +13,10 @@ class ProdutoController extends Controller
 {
     public function ProdutoCreate()
     {
-        $categorias = Categoria::all()->where('estoques_id', $estoques_id = Auth::id());
+        $categorias = Categoria::all()->where('user_id', $user_id = Auth::id());
+
         return view('cadastros.produtos', compact('categorias'));
+
     }
 
 

@@ -13,15 +13,11 @@ return new class extends Migration
     {
         Schema::create('estoques', function (Blueprint $table) {
             $table->id();   
-            // remove this for work in production
-            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
 
             $table->string('titulo');
             $table->text('descricao');
             $table->timestamps();
-
-            // use this in production
-            // $table->unsignedBigInteger('user_id');
         });
     }
 

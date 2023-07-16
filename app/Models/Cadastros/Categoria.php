@@ -6,6 +6,7 @@ namespace App\Models\Cadastros;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Categoria extends Model
 {
@@ -14,7 +15,8 @@ class Categoria extends Model
     protected $fillable = [
         'tituloCategoria',
         'descricaoCategoria',
-        'estoques_id'
+        'estoques_id',
+        'user_id'
     ];
 
     public function Estoque()
@@ -30,11 +32,10 @@ class Categoria extends Model
     public static function CriarCategoria(Request $dados)
     {
         return Self::create([
+            'estoques_id' => $dados->estoques_id,
+            'user_id' => Auth::id(),
             'tituloCategoria' => $dados->tituloCategoria,
-            'descricaoCategoria' => $dados->descricaoCategoria,
-            'estoques_id' => $dados->estoques_id
-
+            'descricaoCategoria' => $dados->descricaoCategoria
         ]);
     }
 }
-
