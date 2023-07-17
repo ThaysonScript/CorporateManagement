@@ -1,23 +1,19 @@
 <?php
 
-namespace App\View\Components\Site;
+namespace App\View\Components\site\mostrar;
 
 use Closure;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
-class home extends Component
+class categorias extends Component
 {
-    public $estoques;
     public $categorias;
-
     /**
      * Create a new component instance.
      */
-    public function __construct($estoques, $categorias)
+    public function __construct($categorias)
     {
-        $this->estoques = $estoques;
         $this->categorias = $categorias;
     }
 
@@ -26,6 +22,6 @@ class home extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.site.home');
+        return view('components.site.mostrar.categorias');
     }
 }

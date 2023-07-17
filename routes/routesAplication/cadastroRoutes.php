@@ -8,8 +8,9 @@ use App\Http\Controllers\Cadastros\Produto\ProdutoController;
 Route::middleware('autenticado')->group(function() {
     Route::get('/home/cadastro/estoque', [EstoqueController::class, 'EstoquesCreate'])->name('cadastros.estoques');
     Route::post('/home/cadastrando/estoque', [EstoqueController::class, 'EstoquesStore'])->name('cadastros.estoques-store');
-    Route::get('/home/estoque-de-{estoque}', [EstoqueController::class, 'EstoquesShow'])->name('site.mostrar.estoques');
 
+
+    Route::get('/home/estoques/categorias', [CategoriaController::class, 'CategoriaIndex'])->name('site.mostrar.categorias');
     Route::get('/home/cadastro/categoria', [CategoriaController::class, 'CategoriaCreate'])->name('cadastros.categorias');
     Route::post('/home/cadastrando/categoria', [CategoriaController::class, 'CategoriaStore'])->name('cadastros.categorias-store');
     Route::get('/home/categoria-de-{item}', [CategoriaController::class, 'VerCategoriaProduto'])->name('site.mostrar.categoriaProduto');
