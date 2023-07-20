@@ -10,15 +10,13 @@ use Illuminate\View\Component;
 class home extends Component
 {
     public $estoques;
-    public $categorias;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($estoques, $categorias)
+    public function __construct($estoques)
     {
         $this->estoques = $estoques;
-        $this->categorias = $categorias;
     }
 
     /**

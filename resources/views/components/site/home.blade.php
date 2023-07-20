@@ -18,8 +18,8 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $estoque->titulo }}</h5>
                                         <p class="card-text">{{ $estoque->descricao }}</p>
-                                        <a href="{{ route('site.mostrar.estoques', ['estoqueId', $estoque->id]) }}" 
-                                            class="btn btn-primary">Saiba mais {{ $estoque->id }}</a>
+                                        <a href="{{ route('site.mostrar.categorias', $estoque->id) }}" 
+                                            class="btn btn-primary">Ver Categorias</a>
                                     </div>
                                 </div>
                             </div>

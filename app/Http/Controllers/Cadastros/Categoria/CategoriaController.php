@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 class CategoriaController extends Controller
 {
-    public function CategoriaIndex()
+    public function CategoriaIndex($idEstoque)
     {
-        $categorias = Categoria::all()->where('user_id', $usur_id = Auth::id());
+        $categorias = Categoria::all()->where('estoques_id', $idEstoque)->where('user_id', $user_id = Auth::id());
+
         return view('site.mostrar.categorias', compact('categorias'));
     }
-
 
 
     public function CategoriaCreate()
