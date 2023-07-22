@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exemplo de Aparecimento</title>
+    <!-- Adicionando o link para o Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <form action="{{ route('') }}" method="post">
+                        <td>
+                            <span contenteditable="false" id="meuInput">Joãokkkkkkkkkk</span>
+                            <button id="meuBotao" style="display: none" onclick="acaoDoBotao()" class="btn btn-primary ml-2" type="submit">Atualizar Campo</button>
+                        </td>
+                    </form>
+                    <td>
+                        <button onclick="habilitarEdicao()" class="btn btn-primary">Editar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function exibirBotao() {
+            var botao = document.getElementById("meuBotao");
+            botao.style.display = "inline";
+        }
+
+        function acaoDoBotao() {
+            var inputElement = document.getElementById("meuInput");
+            inputElement.setAttribute("contenteditable", "false");
+
+            var botao = document.getElementById("meuBotao");
+            botao.style.display = "none";
+        }
+
+        function tornarEditavel() {
+            var inputElement = document.getElementById("meuInput");
+            inputElement.setAttribute("contenteditable", "true");
+        }
+
+        function habilitarEdicao() {
+            var inputElement = document.getElementById("meuInput");
+            var botao = document.getElementById("meuBotao");
+
+            var isEditable = inputElement.getAttribute("contenteditable");
+            if (isEditable === "false") {
+                inputElement.setAttribute("contenteditable", "true");
+                botao.style.display = "inline";
+            } else {
+                inputElement.setAttribute("contenteditable", "false");
+                botao.style.display = "none";
+            }
+        }
+    </script>
+
+    <!-- Adicionando o script do Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

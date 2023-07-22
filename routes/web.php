@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 //-----------------------------------AUTENTICACAO----------------------------------------------//
-require __DIR__ . '/routesAplication/authRoutes.php';
+require __DIR__ . '/RotasWeb/authRoutes.php';
 
 
 //-----------------------------------SITE_HOME----------------------------------------------//
-require __DIR__ . '/routesAplication/siteRoutes.php';
+require __DIR__ . '/RotasWeb/siteRoutes.php';
 
 
 //-----------------------------------CADASTRO_ITEMS_ESTOQUES----------------------------------------------//
-require __DIR__ . '/routesAplication/cadastroRoutes.php';
+require __DIR__ . '/RotasWeb/cadastroRoutes.php';
