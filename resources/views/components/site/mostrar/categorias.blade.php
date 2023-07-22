@@ -13,41 +13,59 @@
                 </thead>
                 <tbody>
                     @foreach ($categorias as $categoria)
-                    <tr>
-                        <td>{{ $categoria->id }}</td>
-
-                        <td>
-                            <form action="{{ route('cadastros.categorias.update', ['categoria', $categoria->id]) }}" method="post">
+                        <tr>
+                            <td>{{ $categoria->id }}</td>
+                            <form action="{{ route('cadastros.categorias.update', [$categoria->id]) }}" method="post">
                                 @csrf
                                 @method('PUT')
-                                <span contenteditable="false" id="tituloCategoria{{ $categoria->id }}" class="me-4">{{ $categoria->tituloCategoria }}</span>
-                                <button id="botaoEditarTitulo{{ $categoria->id }}" style="display: none" onclick="acaoDoBotao('tituloCategoria{{ $categoria->id }}', 'botaoEditarTitulo{{ $categoria->id }}')" class="btn btn-primary ml-2" type="submit">Editar</button>
-                            </form>
-                        </td>
+                                <td class="text-center">
+                                    {{-- <form action="{{ route('cadastros.categorias.update', [$categoria->id]) }}" method="post">
+                                        @csrf
+                                        @method('PUT') --}}
+                                        <input type="text" name="tituloCategoria" value="{{ $categoria->tituloCategoria }}" id="tituloCategoria{{ $categoria->id }}" class="me-4" readonly>
 
-                        <td>
-                            <form action="{{ route('cadastros.categorias.update', ['categoria', $categoria->id]) }}" method="post">
-                                @csrf
-                                @method('PUT')
-                                <span contenteditable="false" id="descricaoCategoria{{ $categoria->id }}" class="me-4">{{ $categoria->descricaoCategoria }}</span>
-                                <button id="botaoEditarDescricao{{ $categoria->id }}" style="display: none" onclick="acaoDoBotao('descricaoCategoria{{ $categoria->id }}', 'botaoEditarDescricao{{ $categoria->id }}')" class="btn btn-primary ml-2" type="submit">Editar</button>
-                            </form>
-                        </td>
+                                        <button id="botaoSalvarTitulo{{ $categoria->id }}" class="btn btn-primary ml-2 mt-2" type="submit" disabled>Salvar</button>
+                                    {{-- </form> --}}
+                                </td>
 
-                        <td class="d-flex justify-content-end">
-                            <a href="{{ route('site.mostrar.produtosAll', $categoria->id) }}" class="btn btn-primary btn-sm me-4">Ver Produtos</a>
-                            <a class="btn btn-primary btn-sm me-4" onclick="habilitarEdicao('tituloCategoria{{ $categoria->id }}', 'botaoEditarTitulo{{ $categoria->id }}', 'descricaoCategoria{{ $categoria->id }}', 'botaoEditarDescricao{{ $categoria->id }}')">Atualizar Categoria</a>
-                            <button class="btn btn-danger btn-sm excluir-btn" data-categoria="{{ $categoria->tituloCategoria }}">Excluir Categoria</button>
-                        </td>
-                    </tr>
+                                <td class="text-center">
+                                    {{-- <form action="{{ route('cadastros.categorias.update', [$categoria->id]) }}" method="post">
+                                        @csrf
+                                        @method('PUT') --}}
+
+                                        <textarea name="descricaoCategoria" id="descricaoCategoria{{ $categoria->id }}" cols="80" rows="2" readonly>
+                                            {{ $categoria->descricaoCategoria }}
+                                        </textarea>
+
+                                        <button id="botaoSalvarDescricao{{ $categoria->id }}" class="btn btn-primary ml-2 mt-2" type="submit" disabled>Salvar</button>
+                                    {{-- </form> --}}
+                                </td>
+                            </form>
+
+                            <td class="d-flex justify-content-end">
+
+                                <a href="{{ route('site.mostrar.produtosAll', $categoria->id) }}" class="btn btn-primary btn-sm me-4">Ver Produtos</a>
+
+                                <a class="btn btn-primary btn-sm me-4" id="botaoAtualizar{{ $categoria->id }}" onclick="Atualizar({{ $categoria->id }})">
+                                    Atualizar Categoria
+                                </a>
+
+                                <button class="btn btn-danger btn-sm excluir-btn" data-categoria="{{ $categoria->tituloCategoria }}">Excluir Categoria</button>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+
         <div class="text-center mt-3">
+
             <input type="text" class="form-control" id="searchInput" placeholder="Pesquisar">
+
             <a id="exportButton" href="#" class="btn btn-success mt-3">Exportar para Excel</a>
+
             <a id="continueLink" href="pagina_continuacao.html" class="btn btn-info mt-3">Continuar</a>
+
         </div>
     </div>
 </div>
@@ -60,44 +78,44 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
 
 <script>
-    // script de atualizacao tabela
-    function exibirBotao(id) {
-        var botao = document.getElementById(id);
-        botao.style.display = "inline";
-    }
+    // script de atualizacao tabela        
+    const botaoAtualizar = document.getElementById('botaoAtualizar' + {{ $categoria->id }})
 
-    function acaoDoBotao(idElemento, idBotao) {
-        var inputElement = document.getElementById(idElemento);
-        inputElement.setAttribute("contenteditable", "false");
+    function Atualizar(id) {
+        const tituloCategoria = document.getElementById('tituloCategoria' + id);
+        const descricaoCategoria = document.getElementById('descricaoCategoria' + id);
+        const botaoSalvarTitulo = document.getElementById('botaoSalvarTitulo' + id);
+        const botaoSalvarDescricao = document.getElementById('botaoSalvarDescricao' + id);
 
-        var botao = document.getElementById(idBotao);
-        botao.style.display = "none";
-    }
+        console.log('passou')
+        console.log(botaoSalvarTitulo)
+        console.log(botaoSalvarDescricao)
 
-    function habilitarEdicao(idElementoTitulo, idBotaoTitulo, idElementoDescricao, idBotaoDescricao) {
-        var inputElementTitulo = document.getElementById(idElementoTitulo);
-        var botaoTitulo = document.getElementById(idBotaoTitulo);
+        if (tituloCategoria.readOnly && descricaoCategoria.readOnly) {
+            // Se o <textarea> estiver somente leitura, habilita ambos os campos
+            descricaoCategoria.removeAttribute('readonly');
+            tituloCategoria.removeAttribute('readonly');
 
-        var inputElementDescricao = document.getElementById(idElementoDescricao);
-        var botaoDescricao = document.getElementById(idBotaoDescricao);
-
-        var isEditableTitulo = inputElementTitulo.getAttribute("contenteditable");
-        var isEditableDescricao = inputElementDescricao.getAttribute("contenteditable");
-
-        if (isEditableTitulo === "false" && isEditableDescricao === "false") {
-            inputElementTitulo.setAttribute("contenteditable", "true");
-            inputElementDescricao.setAttribute("contenteditable", "true");
-
-            botaoTitulo.style.display = "inline";
-            botaoDescricao.style.display = "inline";
+            botaoSalvarTitulo.removeAttribute('disabled');
+            botaoSalvarDescricao.removeAttribute('disabled');
         } else {
-            inputElementTitulo.setAttribute("contenteditable", "false");
-            inputElementDescricao.setAttribute("contenteditable", "false");
+            // Caso contrário, desabilita ambos os campos
+            descricaoCategoria.setAttribute('readonly', 'readonly');
+            tituloCategoria.setAttribute('readonly', 'readonly');
 
-            botaoTitulo.style.display = "none";
-            botaoDescricao.style.display = "none";
+            botaoSalvarTitulo.setAttribute('disabled', 'disabled');
+            botaoSalvarDescricao.setAttribute('disabled', 'disabled');
         }
     }
+
+    botaoAtualizar.addEventListener("click", Atualizar)
+
+
+
+
+
+
+
 
     function aoClicarExcluir() {
         const row = this.closest('tr');

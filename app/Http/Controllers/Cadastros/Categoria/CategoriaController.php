@@ -35,8 +35,37 @@ class CategoriaController extends Controller
 
 
 
-    public function CategoriaUpdate(Categoria $idCategoria)
+    public function CategoriaUpdate(Request $request, $idCategoria)
     {
-        
+        $atualizarCategoria = Categoria::findOrFail($idCategoria);
+
+        $novoTituloCategoria = $request->input('tituloCategoria');
+        $novaDescricaoCategoria = $request->input('descricaoCategoria');
+
+        // dd($novoTituloCategoria, $novoDescricaoCategoria);
+        // dd($atualizarCategoria);
+
+        if($atualizarCategoria->tituloCategoria != $novoTituloCategoria && $atualizarCategoria->descricaoCategoria != $novaDescricaoCategoria) {
+            $atualizarCategoria->tituloCategoria = $novoTituloCategoria;
+            $atualizarCategoria->descricaoCategoria = $novaDescricaoCategoria;
+
+            // dd($novoTituloCategoria, $novaDescricaoCategoria);
+            $atualizarCategoria->save();
+            return redirect()->back();
+        }
+        else if($atualizarCategoria->tituloCategoria != $novoTituloCategoria) {
+            $atualizarCategoria->tituloCategoria = $novoTituloCategoria;
+
+            // dd($novoTituloCategoria);
+            $atualizarCategoria->save();
+            return redirect()->back();
+        }
+        else {
+            $atualizarCategoria->descricaoCategoria = $novaDescricaoCategoria;
+
+            // dd($novaDescricaoCategoria);
+            $atualizarCategoria->save();
+            return redirect()->back();
+        }
     }
 }
