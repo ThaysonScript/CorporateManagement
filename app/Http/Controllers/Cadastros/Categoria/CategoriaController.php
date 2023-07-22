@@ -35,10 +35,8 @@ class CategoriaController extends Controller
 
 
 
-    public function CategoriaShow()
+    public function CategoriaUpdate(Categoria $idCategoria)
     {
-        $categoriaProdutoTotais = Estoque::all()->where('user_id', $user_id = Auth::user()->id);
-
-        return view('site.visualizar.categoriaProduto', compact('categoriaProdutoTotais'));
+        
     }
 }

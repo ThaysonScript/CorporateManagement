@@ -13,7 +13,7 @@ Route::middleware('autenticado')->group(function() {
     Route::get('/home/estoque-{id}/categorias', [CategoriaController::class, 'CategoriaIndex'])->name('site.mostrar.categorias');
     Route::get('/home/cadastro/categoria', [CategoriaController::class, 'CategoriaCreate'])->name('cadastros.categorias');
     Route::post('/home/cadastrando/categoria', [CategoriaController::class, 'CategoriaStore'])->name('cadastros.categorias-store');
-    Route::get('/home/categoria-de-{item}', [CategoriaController::class, 'VerCategoriaProduto'])->name('site.mostrar.categoriaProduto');
+    route::put('/home/atualizando/categoria-{id}', [CategoriaController::class, 'CategoriaUpdate'])->name('cadastros.categorias.update');
 
     route::get('/home/categoria-{item}/produtos', [ProdutoController::class, 'Index'])->name('site.mostrar.produtosAll');
     Route::get('/home/cadastro/produto', [ProdutoController::class, 'ProdutoCreate'])->name('cadastros.produtos');

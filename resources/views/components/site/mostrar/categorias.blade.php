@@ -14,12 +14,34 @@
                     <tbody>
                         @foreach ($categorias as $categoria)
                         <tr>
-                            <td>{{ $categoria->id }}</td>
-                            <td>{{ $categoria->tituloCategoria }}</td>
-                            <td>{{ $categoria->descricaoCategoria }}</td>
+                            <td>
+                                {{ $categoria->id }}
+                            </td>
+
+                            <td>
+                                <form action="{{ route('cadastros.categorias.update', ['categoria', $categoria->id]) }}" method="post">
+                                    @csrf
+                                    @method('PUT')
+                                    <span contenteditable="false" id="tituloCategoria{{ $categoria->id }}">{{ $categoria->tituloCategoria }}</span>
+                                    <button id="botaoEditarTitulo{{ $categoria->id }}" style="display: none" onclick="acaoDoBotao('tituloCategoria{{ $categoria->id }}', 'botaoEditarTitulo{{ $categoria->id }}')" class="btn btn-primary ml-2" type="submit">Editar</button>
+                                </form>
+                            </td>
+    
+                            <td>
+                                <form action="{{ route('cadastros.categorias.update', ['categoria', $categoria->id]) }}" method="post">
+                                    @csrf
+                                    @method('PUT')
+                                    <span contenteditable="false" id="descricaoCategoria{{ $categoria->id }}">{{ $categoria->descricaoCategoria }}</span>
+                                    <button id="botaoEditarDescricao{{ $categoria->id }}" style="display: none" onclick="acaoDoBotao('descricaoCategoria{{ $categoria->id }}', 'botaoEditarDescricao{{ $categoria->id }}')" class="btn btn-primary ml-2" type="submit">Editar</button>
+                                </form>
+                            </td>
+
                             <td class="d-flex justify-content-end">
+
                                 <a href="{{ route('site.mostrar.produtosAll', $categoria->id) }}" class="btn btn-primary btn-sm me-4">Ver Produtos</a>
-                                <a class="btn btn-primary btn-sm me-4">Atualizar Categoria</a>
+
+                                <a class="btn btn-primary btn-sm me-4" onclick="habilitarEdicao('tituloCategoria{{ $categoria->id }}', 'botaoEditarTitulo{{ $categoria->id }}')">Atualizar Categoria</a>
+                            
                                 <button class="btn btn-danger btn-sm excluir-btn" data-categoria="{{ $categoria->tituloCategoria }}">Excluir Categoria</button>
                             </td>
                         </tr>
@@ -43,13 +65,51 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
 
     <script>
-        function aoClicarEditavel() {
-            this.classList.add('editable');
+        // script de atualizacao tabela
+        function exibirBotao(id) {
+            var botao = document.getElementById(id);
+            botao.style.display = "inline";
         }
 
-        function aoPerderFocoEditavel() {
-            this.classList.remove('editable');
+        function acaoDoBotao(idElemento, idBotao) {
+        var inputElement = document.getElementById(idElemento);
+        inputElement.setAttribute("contenteditable", "false");
+
+        var botao = document.getElementById(idBotao);
+        botao.style.display = "none";
+    }
+
+
+        function tornarEditavel(id) {
+            var inputElement = document.getElementById(id);
+            inputElement.setAttribute("contenteditable", "true");
         }
+
+        function habilitarEdicao(idElemento, idBotao) {
+        var inputElement = document.getElementById(idElemento);
+        var botao = document.getElementById(idBotao);
+
+        var isEditable = inputElement.getAttribute("contenteditable");
+        if (isEditable === "false") {
+            inputElement.setAttribute("contenteditable", "true");
+            botao.style.display = "inline";
+        } else {
+            inputElement.setAttribute("contenteditable", "false");
+            botao.style.display = "none";
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
         function aoClicarExcluir() {
             const row = this.closest('tr');
@@ -106,15 +166,9 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            const celulasEditaveis = document.querySelectorAll('td[contenteditable="true"]');
             const botoesExcluir = document.querySelectorAll('.excluir-btn');
             const campoPesquisa = document.getElementById('searchInput');
             const botaoExportar = document.getElementById('exportButton');
-
-            celulasEditaveis.forEach(function(celula) {
-                celula.addEventListener('click', aoClicarEditavel);
-                celula.addEventListener('blur', aoPerderFocoEditavel);
-            });
 
             botoesExcluir.forEach(function(botao) {
                 botao.addEventListener('click', aoClicarExcluir);

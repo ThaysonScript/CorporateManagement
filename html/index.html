@@ -18,14 +18,17 @@
             </thead>
             <tbody>
                 <tr>
-                    <form action="{{ route('') }}" method="post">
-                        <td>
-                            <span contenteditable="false" id="meuInput">Joãokkkkkkkkkk</span>
-                            <button id="meuBotao" style="display: none" onclick="acaoDoBotao()" class="btn btn-primary ml-2" type="submit">Atualizar Campo</button>
-                        </td>
-                    </form>
                     <td>
-                        <button onclick="habilitarEdicao()" class="btn btn-primary">Editar</button>
+                        <span contenteditable="false" id="meuInput1">joao</span>
+                        <button id="meuBotao1" style="display: none" onclick="acaoDoBotao(1)" class="btn btn-primary ml-2" type="button">Editar</button>
+                    </td>
+                    <td>
+                        <span contenteditable="false" id="meuInput2">maria</span>
+                        <button id="meuBotao2" style="display: none" onclick="acaoDoBotao(2)" class="btn btn-primary ml-2" type="button">Atualizar Campo</button>
+                    </td>
+                    <td>
+                        <button onclick="habilitarEdicao(1)" class="btn btn-primary">Editar</button>
+                        <button onclick="habilitarEdicao(2)" class="btn btn-primary">Editar</button>
                     </td>
                 </tr>
             </tbody>
@@ -33,27 +36,27 @@
     </div>
 
     <script>
-        function exibirBotao() {
-            var botao = document.getElementById("meuBotao");
+        function exibirBotao(id) {
+            var botao = document.getElementById("meuBotao" + id);
             botao.style.display = "inline";
         }
 
-        function acaoDoBotao() {
-            var inputElement = document.getElementById("meuInput");
+        function acaoDoBotao(id) {
+            var inputElement = document.getElementById("meuInput" + id);
             inputElement.setAttribute("contenteditable", "false");
 
-            var botao = document.getElementById("meuBotao");
+            var botao = document.getElementById("meuBotao" + id);
             botao.style.display = "none";
         }
 
-        function tornarEditavel() {
-            var inputElement = document.getElementById("meuInput");
+        function tornarEditavel(id) {
+            var inputElement = document.getElementById("meuInput" + id);
             inputElement.setAttribute("contenteditable", "true");
         }
 
-        function habilitarEdicao() {
-            var inputElement = document.getElementById("meuInput");
-            var botao = document.getElementById("meuBotao");
+        function habilitarEdicao(id) {
+            var inputElement = document.getElementById("meuInput" + id);
+            var botao = document.getElementById("meuBotao" + id);
 
             var isEditable = inputElement.getAttribute("contenteditable");
             if (isEditable === "false") {
