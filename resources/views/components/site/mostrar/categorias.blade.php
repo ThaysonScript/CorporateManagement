@@ -20,7 +20,7 @@
                             <form action="{{ route('cadastros.categorias.update', ['categoria', $categoria->id]) }}" method="post">
                                 @csrf
                                 @method('PUT')
-                                <span contenteditable="false" id="tituloCategoria{{ $categoria->id }}">{{ $categoria->tituloCategoria }}</span>
+                                <span contenteditable="false" id="tituloCategoria{{ $categoria->id }}" class="me-4">{{ $categoria->tituloCategoria }}</span>
                                 <button id="botaoEditarTitulo{{ $categoria->id }}" style="display: none" onclick="acaoDoBotao('tituloCategoria{{ $categoria->id }}', 'botaoEditarTitulo{{ $categoria->id }}')" class="btn btn-primary ml-2" type="submit">Editar</button>
                             </form>
                         </td>
@@ -29,7 +29,7 @@
                             <form action="{{ route('cadastros.categorias.update', ['categoria', $categoria->id]) }}" method="post">
                                 @csrf
                                 @method('PUT')
-                                <span contenteditable="false" id="descricaoCategoria{{ $categoria->id }}">{{ $categoria->descricaoCategoria }}</span>
+                                <span contenteditable="false" id="descricaoCategoria{{ $categoria->id }}" class="me-4">{{ $categoria->descricaoCategoria }}</span>
                                 <button id="botaoEditarDescricao{{ $categoria->id }}" style="display: none" onclick="acaoDoBotao('descricaoCategoria{{ $categoria->id }}', 'botaoEditarDescricao{{ $categoria->id }}')" class="btn btn-primary ml-2" type="submit">Editar</button>
                             </form>
                         </td>
