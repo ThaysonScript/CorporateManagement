@@ -109,7 +109,10 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    // 'faker_locale' => 'en_US',
+
+    // add local faker Brasil pt-br
+    'faker_locale' => 'pt_BR',
 
     /*
     |--------------------------------------------------------------------------
