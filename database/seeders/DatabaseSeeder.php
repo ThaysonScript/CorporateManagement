@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UsuarioSeed::class,
-            EstoqueSeed::class,
-            CategoriaSeed::class,
-            ProdutoSeed::class
+            // EstoqueSeed::class,
+            // CategoriaSeed::class,
+            // ProdutoSeed::class
         ]);
     }
 }

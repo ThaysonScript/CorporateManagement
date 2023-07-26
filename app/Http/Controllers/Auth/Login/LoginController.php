@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Auth\Login;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Hamcrest\Core\HasToString;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
+use function PHPUnit\Framework\isEmpty;
 
 class LoginController extends Controller
 {
@@ -32,15 +37,23 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-        
+
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
             return redirect()->intended('home');
         }
-        return back()->withErrors([
-            'email' => 'Email não cadastrado.',
-            'password' => 'Senha incorreta',
-        ])->onlyInput('email', 'password');
+
+        $verificarEmail = User::where('email', $request->email)->first();
+        $senha = $request->password;
+
+        if($verificarEmail === null) {
+            return back()->withErrors([
+                'erroGeral' => 'Email não cadastrado/incorreto e/ou senha incorreta.'
+            ]);
+        }
+        else if(!($verificarEmail && Hash::check($senha, $verificarEmail->password))) {
+            return back()->withErrors(['password' => 'Senha incorreta.']);
+        }
     }
 }
