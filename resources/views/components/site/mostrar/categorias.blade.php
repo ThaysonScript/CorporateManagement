@@ -6,10 +6,12 @@
             <a href="{{ route('cadastros.categorias') }}" class="btn btn-primary btn-lg">Click para Cadastrar uma
                 Categoria</a>
         @else
-            <h1 class="text-center">Categorias</h1>
+            <h1 class="text-center">Categorias do Estoque {{ $estoques->titulo }}</h1>
+            
             <div class="table-container">
                 <div class="container">
                     <div class="table-responsive">
+
                         <table id="categoriesTable" class="table table-hover table-bordered">
                             <thead class="thead-dark">
                                 <tr>
@@ -20,64 +22,76 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach ($categorias as $categoria)
                                     <tr>
                                         <td>{{ $categoria->id }}</td>
+                                        
                                         <form action="{{ route('cadastros.categorias.update', [$categoria->id]) }}"
                                             method="post">
                                             @csrf
                                             @method('PUT')
-                                            <td class="text-center">
-                                                <input type="text" name="tituloCategoria"
-                                                    value="{{ $categoria->tituloCategoria }}"
-                                                    id="tituloCategoria{{ $categoria->id }}" class="me-4" readonly>
 
-                                                <button id="botaoSalvarTitulo{{ $categoria->id }}"
-                                                    class="btn btn-primary ml-2 mt-2" type="submit" disabled>Salvar
+                                            <td class="text-center">
+
+                                                <input type="text" name="tituloCategoria" 
+                                                value="{{ $categoria->tituloCategoria }}"
+                                                id="tituloCategoria{{ $categoria->id }}" 
+                                                class="me-4" readonly>
+                                            </td>
+
+                                            <td class="text-center">
+
+                                                <textarea name="descricaoCategoria" 
+                                                id="descricaoCategoria{{ $categoria->id }}" 
+                                                cols="80" rows="2" readonly>
+                                                    {{ $categoria->descricaoCategoria }}
+                                                </textarea>
+                                            </td>
+                                                
+                                            <td class="d-flex justify-content-end">
+
+                                                <a href="{{ route('site.home') }}"
+                                                    class="btn btn-primary btn-sm me-4">
+                                                    Ver Estoques
+                                                    {{-- ver fornecedores talves --}}
+                                                </a>
+
+                                                <a href="{{ route('site.mostrar.produtosAll', $categoria->id) }}"
+                                                    class="btn btn-primary btn-sm me-4">
+                                                    Ver Produtos
+                                                </a>
+    
+                                                <a class="btn btn-primary btn-sm me-4"
+                                                    id="botaoAtualizar{{ $categoria->id }}"
+                                                    onclick="Atualizar({{ $categoria->id }})">
+                                                    Atualizar Categoria
+                                                </a>
+
+                                                <button id="botaoSalvar{{ $categoria->id }}"
+                                                    class="btn btn-primary me-4" type="submit" disabled>Salvar
+                                                </button>
+    
+                                                <button class="btn btn-danger btn-sm excluir-btn"
+                                                    data-categoria="{{ $categoria->tituloCategoria }}">
+                                                    Excluir Categoria
                                                 </button>
                                             </td>
 
-                                            <td class="text-center">
-                                                <textarea name="descricaoCategoria" id="descricaoCategoria{{ $categoria->id }}" cols="80" rows="2" readonly>
-                                            {{ $categoria->descricaoCategoria }}
-                                        </textarea>
-
-                                                <button id="botaoSalvarDescricao{{ $categoria->id }}"
-                                                    class="btn btn-primary ml-2 mt-2" type="submit"
-                                                    disabled>Salvar</button>
-                                                {{-- </form> --}}
-                                            </td>
                                         </form>
-
-                                        <td class="d-flex justify-content-end">
-
-                                            <a href="{{ route('site.mostrar.produtosAll', $categoria->id) }}"
-                                                class="btn btn-primary btn-sm me-4">Ver Produtos</a>
-
-                                            <a class="btn btn-primary btn-sm me-4"
-                                                id="botaoAtualizar{{ $categoria->id }}"
-                                                onclick="Atualizar({{ $categoria->id }})">
-                                                Atualizar Categoria
-                                            </a>
-
-                                            <button class="btn btn-danger btn-sm excluir-btn"
-                                                data-categoria="{{ $categoria->tituloCategoria }}">Excluir
-                                                Categoria
-                                            </button>
-                                        </td>
                                     </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
+
                     </div>
 
                     <div class="text-center mt-3">
-
                         <input type="text" class="form-control" id="searchInput" placeholder="Pesquisar">
-
                         <a id="exportButton" href="#" class="btn btn-success mt-3">Exportar para Excel</a>
-
                     </div>
+
                 </div>
             </div>
 
@@ -95,33 +109,29 @@
                 function Atualizar(id) {
                     const tituloCategoria = document.getElementById('tituloCategoria' + id);
                     const descricaoCategoria = document.getElementById('descricaoCategoria' + id);
-                    const botaoSalvarTitulo = document.getElementById('botaoSalvarTitulo' + id);
-                    const botaoSalvarDescricao = document.getElementById('botaoSalvarDescricao' + id);
+                    const botaoSalvar = document.getElementById('botaoSalvar' + id);
 
                     console.log('passou')
-                    console.log(botaoSalvarTitulo)
-                    console.log(botaoSalvarDescricao)
+                    console.log(botaoSalvar)
 
                     if (tituloCategoria.readOnly && descricaoCategoria.readOnly) {
                         // Se o <textarea> estiver somente leitura, habilita ambos os campos
                         descricaoCategoria.removeAttribute('readonly');
                         tituloCategoria.removeAttribute('readonly');
 
-                        botaoSalvarTitulo.removeAttribute('disabled');
-                        botaoSalvarDescricao.removeAttribute('disabled');
+                        botaoSalvar.removeAttribute('disabled');
                     } else {
                         // Caso contrário, desabilita ambos os campos
                         descricaoCategoria.setAttribute('readonly', 'readonly');
                         tituloCategoria.setAttribute('readonly', 'readonly');
 
-                        botaoSalvarTitulo.setAttribute('disabled', 'disabled');
-                        botaoSalvarDescricao.setAttribute('disabled', 'disabled');
+                        botaoSalvar.setAttribute('disabled', 'disabled');
                     }
                 }
                 botaoAtualizar.addEventListener("click", Atualizar)
 
 
-                
+
 
                 function aoClicarExcluir() {
                     const row = this.closest('tr');

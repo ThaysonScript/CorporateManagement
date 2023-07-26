@@ -16,13 +16,9 @@ class CategoriaController extends Controller
     {
         $categorias = Categoria::all()->where('estoques_id', $idEstoque)->where('user_id', $user_id = Auth::id());
 
-        // echo $categorias->count();
-        
-        // if ($categorias->count() == 0) {
-        //     dd($categorias);
-        // }
+        $estoques = Estoque::findOrFail($idEstoque);
 
-        return view('site.mostrar.categorias', compact('categorias'));
+        return view('site.mostrar.categorias', compact('categorias', 'estoques'));
     }
 
 

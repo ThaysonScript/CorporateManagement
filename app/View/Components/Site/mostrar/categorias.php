@@ -9,12 +9,14 @@ use Illuminate\View\Component;
 class categorias extends Component
 {
     public $categorias;
+    public $estoques;
     /**
      * Create a new component instance.
      */
-    public function __construct($categorias)
+    public function __construct($categorias, $estoques)
     {
         $this->categorias = $categorias;
+        $this->estoques = $estoques;
     }
 
     /**

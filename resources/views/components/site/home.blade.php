@@ -1,4 +1,4 @@
-<main class="hero">
+{{-- <main class="hero">
     <div class="container text-center">
         
         @if ($estoques->count() === 0)
@@ -29,4 +29,7 @@
             </section>
         @endif
     </div>
-</main>
+</main> --}}
+
+
+<x-site.mostrar.estoques :estoques="$estoques"></x-site.mostrar.estoques>
