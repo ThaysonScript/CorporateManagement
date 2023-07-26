@@ -7,6 +7,7 @@
                 Click para Cadastrar um Estoque
             </a>
         @else
+            <h1 class="display-4">Você tem {{ $estoques->count() }} estoque(s)</h1>
             <div class="table-container">
                 <div class="container-fluid">
                     <div class="table-responsive">
@@ -60,9 +61,7 @@
                                                 </a>
 
 
-
-
-
+                                                
                                                 <a class="btn btn-primary btn-sm me-4"
                                                     id="botaoAtualizar{{ $estoque->id }}"
                                                     onclick="Atualizar({{ $estoque->id }})">
