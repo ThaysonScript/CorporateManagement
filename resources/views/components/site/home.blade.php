@@ -2,7 +2,6 @@
     <div class="container text-center">
         
         @if ($estoques->count() === 0)
-
             <p class="lead">Sem estoques</p>
             <a href="{{ route('cadastros.estoques') }}" class="btn btn-primary btn-lg">Click para cadastrar um estoque</a>
         @else

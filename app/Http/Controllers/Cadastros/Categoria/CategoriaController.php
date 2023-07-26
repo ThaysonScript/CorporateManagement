@@ -8,11 +8,19 @@ use App\Models\Cadastros\Estoque;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function PHPUnit\Framework\isEmpty;
+
 class CategoriaController extends Controller
 {
     public function CategoriaIndex($idEstoque)
     {
         $categorias = Categoria::all()->where('estoques_id', $idEstoque)->where('user_id', $user_id = Auth::id());
+
+        // echo $categorias->count();
+        
+        // if ($categorias->count() == 0) {
+        //     dd($categorias);
+        // }
 
         return view('site.mostrar.categorias', compact('categorias'));
     }

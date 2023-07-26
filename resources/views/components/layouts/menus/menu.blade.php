@@ -7,15 +7,22 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <a href="{{ route('site.home') }}" class="btn btn-primary mb-4">Home</a>
+      <div class="d-grid gap-2">
+        <a href="{{ route('site.home') }}" class="btn btn-primary mb-4">Home</a>
+        <a href="{{ route('cadastros.estoques') }}" class="btn btn-primary mb-4">Cadastrar um Estoque</a>
+        <a href="{{ route('cadastros.categorias') }}" class="btn btn-primary mb-4">Cadastrar uma Categoria</a>
+        <a href="{{ route('cadastros.produtos') }}" class="btn btn-primary mb-4">Cadastrar um Produto</a>
+        <a href="{{ route('auth.logout') }}" class="btn btn-primary">Sair</a>
+      </div>
+      
       <br>
-      <a href="{{ route('cadastros.estoques') }}" class="btn btn-primary mb-4">Cadastrar um Estoque</a>
+      
       <br>
-      <a href="{{ route('cadastros.categorias') }}" class="btn btn-primary mb-4">Cadastrar uma Categoria</a>
+      
       <br>
-      <a href="{{ route('cadastros.produtos') }}" class="btn btn-primary mb-4">Cadastrar um Produto</a>
+      
       <br>
-      <a href="{{ route('auth.logout') }}" class="btn btn-primary">Sair</a>
+      
     </div>
   </div>
 </div>
