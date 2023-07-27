@@ -88,7 +88,7 @@
             <div class="col-md-8 mx-auto text-center">
                 <h2 class="display-4">Descubra o Futuro do Gerenciamento de Estoque com Nosso App Revolucionário!</h2>
                 <p class="lead">Simplifique o gerenciamento do estoque da sua empresa com nosso App de última geração. Com uma interface intuitiva e recursos avançados, estamos aqui para tornar sua experiência mais eficiente e produtiva.</p>
-                <a href="#features" class="btn btn-light btn-lg mt-4">Experimente Agora</a>
+                <a href="{{ route('site.aplicativo') }}" class="btn btn-light btn-lg mt-4">Experimente Agora</a>
             </div>
         </div>
     </div>
