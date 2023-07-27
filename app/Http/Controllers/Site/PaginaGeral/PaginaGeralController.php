@@ -22,4 +22,9 @@ class PaginaGeralController extends Controller
 
         return view('site.home', compact('estoques'));
     }
+
+    public function Aplicativo()
+    {
+        return view('site.aplicativo');
+    }
 }

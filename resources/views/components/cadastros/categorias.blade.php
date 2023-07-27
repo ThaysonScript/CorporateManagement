@@ -1,5 +1,5 @@
 <header class="bg-dark text-white text-center">
-    <div class="container py-2">
+    <div class="container-fluid py-2">
         <h1 class="display-4">Controle sua Regra de Negócio</h1>
         <p class="lead">Adicione uma Nova Categoria</p>
     </div>
