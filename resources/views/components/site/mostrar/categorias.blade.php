@@ -1,15 +1,24 @@
 <main class="hero">
-    <div class="container text-center">
+    <div class="container-fluid text-center">
 
         @if ($categorias->count() === 0)
             <p class="lead">Sem Categorias</p>
             <a href="{{ route('cadastros.categorias') }}" class="btn btn-primary btn-lg">Click para Cadastrar uma
                 Categoria</a>
         @else
+            @if (session('sucesso'))
+                <div class="alert alert-success">
+                    {{ session('sucesso') }}
+                </div>
+            @elseif (session('erro'))
+                <div class="alert alert-danger">
+                    {{ session('erro') }}
+                </div>
+            @endif
+
             <h1 class="text-center">Categorias do Estoque {{ $estoques->titulo }}</h1>
-            
             <div class="table-container">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="table-responsive">
 
                         <table id="categoriesTable" class="table table-hover table-bordered">
@@ -26,7 +35,7 @@
                                 @foreach ($categorias as $categoria)
                                     <tr>
                                         <td>{{ $categoria->id }}</td>
-                                        
+
                                         <form action="{{ route('cadastros.categorias.update', [$categoria->id]) }}"
                                             method="post">
                                             @csrf
@@ -34,25 +43,21 @@
 
                                             <td class="text-center">
 
-                                                <input type="text" name="tituloCategoria" 
-                                                value="{{ $categoria->tituloCategoria }}"
-                                                id="tituloCategoria{{ $categoria->id }}" 
-                                                class="me-4" readonly>
+                                                <input type="text" name="tituloCategoria"
+                                                    value="{{ $categoria->tituloCategoria }}"
+                                                    id="tituloCategoria{{ $categoria->id }}" class="me-4" readonly>
                                             </td>
 
                                             <td class="text-center">
 
-                                                <textarea name="descricaoCategoria" 
-                                                id="descricaoCategoria{{ $categoria->id }}" 
-                                                cols="80" rows="2" readonly>
+                                                <textarea name="descricaoCategoria" id="descricaoCategoria{{ $categoria->id }}" cols="80" rows="2" readonly>
                                                     {{ $categoria->descricaoCategoria }}
                                                 </textarea>
                                             </td>
-                                                
+
                                             <td class="d-flex justify-content-end">
 
-                                                <a href="{{ route('site.home') }}"
-                                                    class="btn btn-primary btn-sm me-4">
+                                                <a href="{{ route('site.home') }}" class="btn btn-primary btn-sm me-4">
                                                     Ver Estoques
                                                     {{-- ver fornecedores talves --}}
                                                 </a>
@@ -61,7 +66,7 @@
                                                     class="btn btn-primary btn-sm me-4">
                                                     Ver Produtos
                                                 </a>
-    
+
                                                 <a class="btn btn-primary btn-sm me-4"
                                                     id="botaoAtualizar{{ $categoria->id }}"
                                                     onclick="Atualizar({{ $categoria->id }})">
@@ -71,14 +76,19 @@
                                                 <button id="botaoSalvar{{ $categoria->id }}"
                                                     class="btn btn-primary me-4" type="submit" disabled>Salvar
                                                 </button>
-    
+                                            </td>
+                                        </form>
+                                        <td>
+                                            <form action="{{ route('cadastros.categorias-deletar', $categoria->id) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('DELETE')
                                                 <button class="btn btn-danger btn-sm excluir-btn"
-                                                    data-categoria="{{ $categoria->tituloCategoria }}">
+                                                    data-categoria="{{ $categoria->tituloCategoria }}" type="submit">
                                                     Excluir Categoria
                                                 </button>
-                                            </td>
-
-                                        </form>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
 

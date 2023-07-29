@@ -44,4 +44,37 @@ class ProdutoController extends Controller
 
         return view('site.mostrar.produtos', compact('produtos'));
     }
+
+
+    public function ProdutoUpdate(Request $request, $produtoId)
+    {
+        $atualizarProduto = Produto::findOrFail($produtoId);
+
+        $novoTitulo = $request->tituloProduto;
+        $novaDescricao = $request->descricaoProduto;
+
+        $atualizarProduto->tituloProduto = $novoTitulo;
+        $atualizarProduto->descricaoProduto = $novaDescricao;
+
+        $atualizarProduto->save();
+
+        return redirect()->back();
+    }
+
+
+    public function ProdutoDeletar($produtoId)
+    {
+        $deletarProduto = Produto::findOrFail($produtoId);
+
+        $findId = $deletarProduto->id;
+
+        if($findId !== null) {
+            $deletarProduto->delete();
+
+            return redirect()->back()->with('sucesso', 'categoria deletada com sucesso');
+        }
+        else {
+            return redirect()->back()->with('erro', 'categoria nao encontrada');
+        }
+    }
 }

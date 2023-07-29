@@ -7,6 +7,16 @@
                 Click para Cadastrar um Estoque
             </a>
         @else
+            @if (session('sucesso'))
+                <div class="alert alert-success">
+                    {{ session('sucesso') }}
+                </div>
+            @elseif (session('erro'))
+                <div class="alert alert-danger">
+                    {{ session('erro') }}
+                </div>
+            @endif
+
             <h1 class="display-4">Você tem {{ $estoques->count() }} estoque(s)</h1>
             <div class="table-container">
                 <div class="container-fluid">
@@ -27,27 +37,27 @@
                                     <tr>
                                         <td>{{ $estoque->id }}</td>
 
-                                        <form action="{{ route('cadastros.categorias.update', [$estoque->id]) }}"
+                                        <form action="{{ route('cadastros.estoques-atualizar', $estoque->id) }}"
                                             method="post">
                                             @csrf
                                             @method('PUT')
 
                                             <td class="text-center">
 
-                                                <input type="text" name="tituloCategoria"
-                                                    value="{{ $estoque->titulo }}"
-                                                    id="tituloCategoria{{ $estoque->id }}" class="me-4" readonly>
+                                                <input type="text" name="tituloEstoque"
+                                                    value="{{ $estoque->titulo }}" id="tituloEstoque{{ $estoque->id }}"
+                                                    class="me-4" readonly>
                                             </td>
 
                                             <td class="text-center">
 
-                                                <textarea name="descricaoCategoria" id="descricaoCategoria{{ $estoque->id }}" cols="80" rows="2" readonly>
+                                                <textarea name="descricaoEstoque" id="descricaoEstoque{{ $estoque->id }}" cols="80" rows="2" readonly>
                                                     {{ $estoque->descricao }}
                                                 </textarea>
                                             </td>
 
                                             <td class="d-flex justify-content-end">
-                                                
+
                                                 <a href="{{ route('site.mostrar.categorias', $estoque->id) }}"
                                                     class="btn btn-primary btn-sm me-4">
                                                     Ver Categorias
@@ -61,7 +71,7 @@
                                                 </a>
 
 
-                                                
+
                                                 <a class="btn btn-primary btn-sm me-4"
                                                     id="botaoAtualizar{{ $estoque->id }}"
                                                     onclick="Atualizar({{ $estoque->id }})">
@@ -71,14 +81,20 @@
                                                 <button id="botaoSalvar{{ $estoque->id }}"
                                                     class="btn btn-primary me-4" type="submit" disabled>Salvar
                                                 </button>
-
-                                                <button class="btn btn-danger btn-sm excluir-btn"
-                                                    data-categoria="{{ $estoque->titulo }}">
-                                                    Excluir Estoque
-                                                </button>
                                             </td>
 
                                         </form>
+                                        <td>
+                                            <form action="{{ route('cadastros.estoques-deletar', $estoque->id) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-sm excluir-btn"
+                                                    data-categoria="{{ $estoque->titulo }}" type="submit">
+                                                    Excluir Estoque
+                                                </button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
 
@@ -107,8 +123,8 @@
                 const botaoAtualizar = document.getElementById('botaoAtualizar' + {{ $estoque->id }})
 
                 function Atualizar(id) {
-                    const tituloCategoria = document.getElementById('titulo' + id);
-                    const descricaoCategoria = document.getElementById('descricao' + id);
+                    const tituloCategoria = document.getElementById('tituloEstoque' + id);
+                    const descricaoCategoria = document.getElementById('descricaoEstoque' + id);
                     const botaoSalvar = document.getElementById('botaoSalvar' + id);
 
                     console.log('passou')

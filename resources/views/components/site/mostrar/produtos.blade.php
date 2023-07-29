@@ -1,5 +1,5 @@
 <main class="hero">
-    <div class="container text-center">
+    <div class="container-fluid text-center">
 
         @if ($produtos->count() === 0)
             <p class="lead">Sem Produtos</p>
@@ -7,10 +7,19 @@
                 Click para Cadastrar um Produto
             </a>
         @else
-            <h1 class="text-center">Produtos da Categoria de {{ $categorias->tituloCategoria }}</h1>
+            @if (session('sucesso'))
+                <div class="alert alert-success">
+                    {{ session('sucesso') }}
+                </div>
+            @elseif (session('erro'))
+                <div class="alert alert-danger">
+                    {{ session('erro') }}
+                </div>
+            @endif
 
+            <h1 class="text-center">Produtos da Categoria de {{ $categorias->tituloCategoria }}</h1>
             <div class="table-container">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="table-responsive">
 
                         <table id="categoriesTable" class="table table-hover table-bordered">
@@ -28,33 +37,32 @@
                                     <tr>
                                         <td>{{ $produto->id }}</td>
 
-                                        <form action="{{ route('cadastros.categorias.update', [$produto->id]) }}"
+                                        <form action="{{ route('atualizar.produto', [$produto->id]) }}"
                                             method="post">
                                             @csrf
                                             @method('PUT')
 
                                             <td class="text-center">
 
-                                                <input type="text" name="tituloCategoria"
+                                                <input type="text" name="tituloProduto"
                                                     value="{{ $produto->tituloProduto }}"
-                                                    id="tituloCategoria{{ $produto->id }}" class="me-4" readonly>
+                                                    id="tituloProduto{{ $produto->id }}" class="me-4" readonly>
                                             </td>
 
                                             <td class="text-center">
 
-                                                <textarea name="descricaoCategoria" id="descricaoCategoria{{ $produto->id }}" cols="80" rows="2" readonly>
+                                                <textarea name="descricaoProduto" id="descricaoProduto{{ $produto->id }}" cols="80" rows="2" readonly>
                                                     {{ $produto->descricaoProduto }}
                                                 </textarea>
                                             </td>
 
                                             <td class="d-flex justify-content-end">
 
-                                                <a href="{{ route('site.home') }}"
-                                                    class="btn btn-primary btn-sm me-4">
+                                                <a href="{{ route('site.home') }}" class="btn btn-primary btn-sm me-4">
                                                     Ver Estoques
                                                     {{-- ver fornecedores talves --}}
                                                 </a>
-                                                
+
                                                 <a class="btn btn-primary btn-sm me-4"
                                                     id="botaoAtualizar{{ $produto->id }}"
                                                     onclick="Atualizar({{ $produto->id }})">
@@ -64,14 +72,19 @@
                                                 <button id="botaoSalvar{{ $produto->id }}"
                                                     class="btn btn-primary me-4" type="submit" disabled>Salvar
                                                 </button>
-
+                                            </td>
+                                        </form>
+                                        <td>
+                                            <form action="{{ route('deletar.produto', $produto->id) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('DELETE')
                                                 <button class="btn btn-danger btn-sm excluir-btn"
-                                                    data-categoria="{{ $produto->tituloProduto }}">
+                                                    data-categoria="{{ $produto->tituloProduto }}" type="submit">
                                                     Excluir Produto
                                                 </button>
-                                            </td>
-
-                                        </form>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
 
@@ -100,23 +113,23 @@
                 const botaoAtualizar = document.getElementById('botaoAtualizar' + {{ $produto->id }})
 
                 function Atualizar(id) {
-                    const tituloCategoria = document.getElementById('tituloProduto' + id);
-                    const descricaoCategoria = document.getElementById('descricaoProduto' + id);
+                    const tituloProduto = document.getElementById('tituloProduto' + id);
+                    const descricaoProduto = document.getElementById('descricaoProduto' + id);
                     const botaoSalvar = document.getElementById('botaoSalvar' + id);
 
                     console.log('passou')
                     console.log(botaoSalvar)
 
-                    if (tituloCategoria.readOnly && descricaoCategoria.readOnly) {
+                    if (tituloProduto.readOnly && descricaoProduto.readOnly) {
                         // Se o <textarea> estiver somente leitura, habilita ambos os campos
-                        descricaoCategoria.removeAttribute('readonly');
-                        tituloCategoria.removeAttribute('readonly');
+                        descricaoProduto.removeAttribute('readonly');
+                        tituloProduto.removeAttribute('readonly');
 
                         botaoSalvar.removeAttribute('disabled');
                     } else {
                         // Caso contrário, desabilita ambos os campos
-                        descricaoCategoria.setAttribute('readonly', 'readonly');
-                        tituloCategoria.setAttribute('readonly', 'readonly');
+                        descricaoProduto.setAttribute('readonly', 'readonly');
+                        tituloProduto.setAttribute('readonly', 'readonly');
 
                         botaoSalvar.setAttribute('disabled', 'disabled');
                     }

@@ -8,8 +8,6 @@ use App\Models\Cadastros\Estoque;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use function PHPUnit\Framework\isEmpty;
-
 class CategoriaController extends Controller
 {
     public function CategoriaIndex($idEstoque)
@@ -46,30 +44,44 @@ class CategoriaController extends Controller
         $novoTituloCategoria = $request->input('tituloCategoria');
         $novaDescricaoCategoria = $request->input('descricaoCategoria');
 
-        // dd($novoTituloCategoria, $novoDescricaoCategoria);
-        // dd($atualizarCategoria);
-
         if($atualizarCategoria->tituloCategoria != $novoTituloCategoria && $atualizarCategoria->descricaoCategoria != $novaDescricaoCategoria) {
             $atualizarCategoria->tituloCategoria = $novoTituloCategoria;
             $atualizarCategoria->descricaoCategoria = $novaDescricaoCategoria;
 
-            // dd($novoTituloCategoria, $novaDescricaoCategoria);
             $atualizarCategoria->save();
+
             return redirect()->back();
         }
         else if($atualizarCategoria->tituloCategoria != $novoTituloCategoria) {
             $atualizarCategoria->tituloCategoria = $novoTituloCategoria;
 
-            // dd($novoTituloCategoria);
             $atualizarCategoria->save();
+
             return redirect()->back();
         }
         else {
             $atualizarCategoria->descricaoCategoria = $novaDescricaoCategoria;
 
-            // dd($novaDescricaoCategoria);
             $atualizarCategoria->save();
+
             return redirect()->back();
+        }
+    }
+
+
+    public function CategoriasDeletar($categoriaId)
+    {
+        $deletarCategoria = Categoria::findOrFail($categoriaId);
+
+        $findId = $deletarCategoria->id;
+
+        if($findId !== null) {
+            $deletarCategoria->delete();
+
+            return redirect()->back()->with('sucesso', 'categoria deletada com sucesso');
+        }
+        else {
+            return redirect()->back()->with('erro', 'categoria nao encontrada');
         }
     }
 }
