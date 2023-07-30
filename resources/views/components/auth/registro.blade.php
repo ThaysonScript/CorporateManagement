@@ -50,6 +50,7 @@
                                 login</a>
                         </p>
                     </form>
+                    <a href="{{ route('auth.socialite.redirecionar') }}">Login com Google</a>
                 </div>
             </div>
         </div>
