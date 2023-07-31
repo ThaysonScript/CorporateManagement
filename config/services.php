@@ -34,6 +34,6 @@ return [
     'google' => [
         'client_id' => '741435685576-v2rq7ablb3rrraigkoksg0t396f01sm8.apps.googleusercontent.com',
         'client_secret' => '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',
-        'redirect' => 'http://localhost:8000/entrando/google/autenticando',
+        'redirect' => 'http://gerenciarestoque-laravel.com/entrando/google/autenticando',
     ],
 ];
