@@ -33,6 +33,9 @@
                             <a href="{{ route('cadastros.produtos') }}" class="nav-link">Cadastre Produto</a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('cadastros.fornecedores') }}" class="nav-link">Cadastro de Fornecedores</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('auth.logout') }}">Sair</a>
                         </li>
                     </ul>
