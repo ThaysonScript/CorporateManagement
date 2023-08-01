@@ -43,7 +43,7 @@
                         </form>
                         <div class="text-center">
                             <p>Entre com:</p>
-                            <a href="{{ route('auth.socialite.redirecionar') }}">
+                            <a href="{{ route('auth.google.redirecionar') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                     class="bi bi-google text-black" viewBox="0 0 16 16">
                                     <path

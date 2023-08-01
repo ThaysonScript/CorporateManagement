@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Auth\Socialite;
+namespace App\Http\Controllers\Auth\Google;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Str;
 
-class SocialiteController extends Controller
+class GoogleController extends Controller
 {
     public function RedirecionarProvedor() 
     {
