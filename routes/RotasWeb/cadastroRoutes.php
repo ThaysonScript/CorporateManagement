@@ -27,6 +27,6 @@ Route::middleware('autenticado')->group(function() {
     Route::put('/home/atualizando-produto-{id}', [ProdutoController::class, 'ProdutoUpdate'])->name('atualizar.produto');
     Route::delete('/home/deletando-produto-{id}', [ProdutoController::class, 'ProdutoDeletar'])->name('deletar.produto');
 
-    Route::get('/home/cadastro/fornecedores', [FornecedorController::class, 'Index'])->name('cadastros.fornecedores');
+    Route::get('/home/cadastro/fornecedores', [FornecedorController::class, 'FornecedorCreate'])->name('cadastros.fornecedores');
     Route::post('/home/cadastrando/fornecedores', [FornecedorController::class, 'FornecedorStore'])->name('cadastros.fornecedores-store');
 });

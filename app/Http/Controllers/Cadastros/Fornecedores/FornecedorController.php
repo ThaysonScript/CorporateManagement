@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class FornecedorController extends Controller
 {
-    public function Index()
+    public function FornecedorCreate()
     {
         return view('cadastros.fornecedores');
     }

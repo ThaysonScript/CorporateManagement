@@ -16,17 +16,14 @@ return new class extends Migration
             $table->string('fornecedorNome');
             $table->string('email')->unique();
             $table->string('fornecedorEmpresa')->nullable();
-
+            $table->string('servicoPrestado');
             $table->string('telefone')->nullable();
-            $table->string('endereco');
+            $table->string('endereco')->nullable();
+            $table->enum('tipo', ['pessoa_fisica', 'pessoa_juridica']);
            
             $table->string('pais')->default('Brasil');
             $table->string('estado')->nullable();
             $table->string('cidade')->nullable();
-            
-            $table->enum('tipo', ['pessoa_fisica', 'pessoa_juridica']);
-
-            $table->string('servicoPrestado');
 
             $table->timestamps();
         });
