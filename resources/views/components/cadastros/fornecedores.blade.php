@@ -147,67 +147,67 @@
 
                             {{-- algum estoque --}}
                             <div class="form-check mb-2 col">
+                                <label class="form-check-label" for="estoque">Associar a um Estoque</label>
                                 <input type="checkbox" class="form-check-input associar-checkbox" id="estoque"
                                     name="associarEstoque">
-                                <label class="form-check-label" for="estoque">Associar a um Estoque</label>
                             </div>
-
-                            {{-- selecao estoque --}}
-                            <div class="form-group select-form" style="display:none;" id="select-estoque">
-                                <label for="estoque_id">Selecionar Estoque</label>
-                                <select class="form-control" name="estoque_id">
-                                    <option value="1">Estoque 1</option>
-                                    <option value="2">Estoque 2</option>
-                                    <option value="3">Estoque 3</option>
-                                    <!-- Mais opções do estoque -->
-                                </select>
-                            </div>
-
 
                             {{-- alguma categoria --}}
                             <div class="form-check mb-2 col">
+                                <label class="form-check-label" for="categoria">Associar a uma Categoria</label>
                                 <input type="checkbox" class="form-check-input associar-checkbox" id="categoria"
                                     name="associarCategoria">
-                                <label class="form-check-label" for="categoria">Associar a uma Categoria</label>
                             </div>
-
-                            {{-- selecao categoria --}}
-                            <div class="form-group select-form" style="display:none;" id="select-categoria">
-                                <label for="categoria_id">Selecionar Categoria</label>
-                                <select class="form-control" name="categoria_id">
-                                    <option value="1">Categoria 1</option>
-                                    <option value="2">Categoria 2</option>
-                                    <option value="3">Categoria 3</option>
-                                    <!-- Mais opções das categorias -->
-                                </select>
-                            </div>
-
 
                             {{-- algum produto --}}
                             <div class="form-check mb-2 col">
+                                <label class="form-check-label" for="produto">Associar a um Produto</label>
                                 <input type="checkbox" class="form-check-input associar-checkbox" id="produto"
                                     name="associarProduto">
-                                <label class="form-check-label" for="produto">Associar a um Produto</label>
-                            </div>
-
-                            {{-- selecao produto --}}
-                            <div class="form-group select-form" style="display:none;" id="select-produto">
-                                <label for="produto_id">Selecionar Produto</label>
-                                <select class="form-control" name="produto_id">
-                                    <option value="1">Produto 1</option>
-                                    <option value="2">Produto 2</option>
-                                    <option value="3">Produto 3</option>
-                                    <!-- Mais opções dos produtos -->
-                                </select>
                             </div>
 
                             {{-- a todos --}}
                             <div class="form-check mb-2 col">
+                                <label class="form-check-label" for="todos">Associar a Todos</label>
                                 <input type="checkbox" class="form-check-input associar-checkbox" id="todos"
                                     name="associarTodos">
-                                <label class="form-check-label" for="todos">Associar a Todos</label>
                             </div>
 
+
+
+
+                            {{-- selecao estoque --}}
+                            <div class="form-group select-form" style="display:none;" id="select-estoque">
+                                <label for="estoque_id">Selecionar Estoque: </label>
+                                <select class="form-control" name="estoque_id" required>
+                                    <option value="">Selecione um Estoque</option>
+                                    @foreach ($estoques as $estoque)
+                                        <option value="{{ $estoque->id }}">{{ $estoque->titulo }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            {{-- selecao categoria --}}
+                            <div class="form-group select-form" style="display:none;" id="select-categoria">
+                                <label for="categoria_id">Selecionar Categoria: </label>
+                                <select class="form-control" name="categoria_id">
+                                    <option value="">Selecione uma Categoria</option>
+                                    @foreach ($categorias as $categoria)
+                                        <option value="{{ $categoria->id }}">{{ $categoria->tituloCategoria }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            {{-- selecao produto --}}
+                            <div class="form-group select-form" style="display:none;" id="select-produto">
+                                <label for="produto_id">Selecionar Produto: </label>
+                                <select class="form-control" name="produto_id">
+                                    <option value="">Selecione um Produto</option>
+                                    @foreach ($produtos as $produto)
+                                        <option value="{{ $produto->id }}">{{ $estoque->tituloProduto }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
 
                         {{-- enviar form --}}
@@ -232,60 +232,38 @@
 {{-- scripts --}}
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        let checkboxes = document.querySelectorAll(".associar-checkbox");
-        let selectEstoque = document.getElementById("select-estoque");
-        let selectCategoria = document.getElementById("select-categoria");
-        let selectProduto = document.getElementById("select-produto");
-        let checkboxTodos = document.getElementById("todos");
+        const checkboxes = document.querySelectorAll(".associar-checkbox");
+        const checkboxTodos = document.getElementById("todos");
+        const selects = document.querySelectorAll("[id^='select-']");
 
-        checkboxes.forEach(function(checkbox) {
+        checkboxes.forEach(checkbox => {
             checkbox.addEventListener("change", function() {
-                let checkboxId = this.id;
-                let selectId = "select-" + checkboxId;
-                let selectElement = document.getElementById(selectId);
-
-                if (this.checked) {
-                    selectElement.style.display = "block";
-                    if (checkboxId === "todos") {
-                        checkboxes.forEach(function(otherCheckbox) {
-                            if (otherCheckbox !== checkbox) {
-                                otherCheckbox.checked = false;
-                                let otherSelectId = "select-" + otherCheckbox.id;
-                                let otherSelectElement = document.getElementById(
-                                    otherSelectId);
-                                otherSelectElement.style.display = "none";
-                            }
-                        });
-                    } else if (checkboxTodos.checked) {
-                        checkboxTodos.checked = false;
-                        selectEstoque.style.display = "none";
-                        selectCategoria.style.display = "none";
-                        selectProduto.style.display = "none";
-                    }
-                } else {
-                    selectElement.style.display = "none";
-                    if (checkboxId === "todos" && !checkboxTodos.checked) {
-                        selectEstoque.style.display = "none";
-                        selectCategoria.style.display = "none";
-                        selectProduto.style.display = "none";
-                    }
+                if (this !== checkboxTodos) {
+                    checkboxTodos.checked = false;
                 }
+
+                selects.forEach(select => {
+                    const selectId = select.id.split("-")[1];
+                    const checkboxId = checkbox.id;
+
+                    if (checkboxId === selectId) {
+                        select.style.display = checkbox.checked ? "block" : "none";
+                    }
+                });
             });
         });
 
         checkboxTodos.addEventListener("change", function() {
-            if (this.checked) {
-                checkboxes.forEach(function(checkbox) {
-                    checkbox.checked = false;
-                });
-                selectEstoque.style.display = "block";
-                selectCategoria.style.display = "block";
-                selectProduto.style.display = "block";
-            } else {
-                selectEstoque.style.display = "none";
-                selectCategoria.style.display = "none";
-                selectProduto.style.display = "none";
-            }
+            selects.forEach(select => {
+                select.style.display = this.checked && select.id === "select-estoque" ?
+                    "block" : "none";
+            });
+
+            checkboxes.forEach(otherCheckbox => {
+                if (otherCheckbox !== checkboxTodos) {
+                    otherCheckbox.checked = false;
+                }
+            });
         });
     });
 </script>

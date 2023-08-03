@@ -2,9 +2,11 @@
 
 namespace App\Models\Cadastros;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Produto extends Model
 {
@@ -13,8 +15,14 @@ class Produto extends Model
     protected $fillable = [
         'tituloProduto',
         'descricaoProduto',
-        'categorias_id'
+        'categorias_id',
+        'user_id'
     ];
+
+    public function Usuario()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function Categoria()
     {
@@ -23,6 +31,11 @@ class Produto extends Model
 
     public static function CriarProduto(Request $request)
     {
-        return Self::create($request->all());
+        return Self::create([
+            'tituloProduto' => $request->tituloProduto,
+            'descricaoProduto' => $request->descricaProduto,
+            'categorias_id' => $request->categorias_id,
+            'user_id' => Auth::id()
+        ]);
     }
 }

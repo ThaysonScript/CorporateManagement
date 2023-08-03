@@ -25,6 +25,11 @@ return new class extends Migration
             $table->string('estado')->nullable();
             $table->string('cidade')->nullable();
 
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('estoque_id')->constrained('estoques')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('categoria_id')->nullable()->constrained('categorias')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('produto_id')->nullable()->constrained('produtos')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

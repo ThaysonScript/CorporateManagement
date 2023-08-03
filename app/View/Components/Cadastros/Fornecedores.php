@@ -8,12 +8,17 @@ use Illuminate\View\Component;
 
 class Fornecedores extends Component
 {
+    public $estoques;
+    public $categorias;
+    public $produtos;
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($estoques, $categorias, $produtos)
     {
-        //
+        $this->estoques = $estoques;
+        $this->categorias = $categorias;
+        $this->produtos = $produtos;
     }
 
     /**

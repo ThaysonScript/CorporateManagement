@@ -28,6 +28,15 @@ class Estoque extends Model
         return $this->hasMany(Categoria::class);
     }
 
+    public function Fornecedor()
+    {
+        $this->hasMany(Fornecedor::class);
+    }
+
+
+
+
+
     public static function CadastrarEstoque(Request $dados)
     {
         return Self::create([

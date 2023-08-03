@@ -61,9 +61,9 @@
 
                                             {{-- fornecedores --}}
                                             <td>
-                                                <textarea class="form-control text-center" name="fornecedorEstoque" id="fornecedorEstoque{{ $estoque->id }}" cols="35" rows="2"
-                                                    readonly>
-                                                    {{ $estoque->fornecedor }}
+                                                <textarea class="form-control text-center" name="fornecedorEstoque" id="fornecedorEstoque{{ $estoque->id }}"
+                                                    cols="35" rows="2" readonly>
+                                                    {{ $estoque->Fornecedor() }}
                                                 </textarea>
                                             </td>
 
