@@ -1,18 +1,18 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Cadastros;
 
-use App\Models\User;
+use App\Models\Cadastros\Categoria;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class UsuarioSeed extends Seeder
+class CategoriaSeed extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        User::factory(1)->create();
+        Categoria::factory(5)->create();
     }
 }

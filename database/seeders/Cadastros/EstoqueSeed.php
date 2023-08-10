@@ -1,18 +1,19 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Cadastros;
 
-use App\Models\User;
+use App\Models\Cadastros\Estoque;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Auth;
 
-class UsuarioSeed extends Seeder
+class EstoqueSeed extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        User::factory(1)->create();
+        Estoque::factory(1)->create();
     }
 }
