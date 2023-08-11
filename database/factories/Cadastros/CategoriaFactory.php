@@ -20,11 +20,15 @@ class CategoriaFactory extends Factory
         $this->faker->addProvider(new Fakecar($this->faker));
         $vehicle = $this->faker->vehicleArray();
 
+        // $vehicle['brand']
+
+        $automoveis_marca = $this->faker->vehicleBrand;
+
         return [
             'user_id' => 1,
             'estoques_id' => 1,
-            'tituloCategoria' => $vehicle['brand'],
-            'descricaoCategoria' => 'carro descricao'
+            'tituloCategoria' => $automoveis_marca,
+            'descricaoCategoria' => 'Automoveis da marca: ' . $automoveis_marca
         ];
     }
 }

@@ -20,8 +20,8 @@ class EstoqueFactory extends Factory
     {
         return [
             'user_id' => 1,
-            'titulo' => 'Veiculos',
-            'descricao' => 'tipos de veiculos'
+            'titulo' => 'Automoveis',
+            'descricao' => 'tipos de automoveis'
         ];
     }
 }

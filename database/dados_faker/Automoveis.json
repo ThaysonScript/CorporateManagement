@@ -1,0 +1,525 @@
+{
+    "marcas": [
+        {
+            "nome": "Toyota",
+            "contato": {
+                "email": "contato@toyota.com",
+                "telefone": "123-456-7890"
+            },
+            "modelos": [
+                {
+                    "nome": "Corolla",
+                    "preco": 25000
+                },
+                {
+                    "nome": "Camry",
+                    "preco": 35000
+                },
+                {
+                    "nome": "RAV4",
+                    "preco": 30000
+                }
+            ]
+        },
+        {
+            "nome": "Honda",
+            "contato": {
+                "email": "contato@honda.com",
+                "telefone": "234-567-8901"
+            },
+            "modelos": [
+                {
+                    "nome": "Civic",
+                    "preco": 22000
+                },
+                {
+                    "nome": "Accord",
+                    "preco": 32000
+                },
+                {
+                    "nome": "CR-V",
+                    "preco": 28000
+                }
+            ]
+        },
+        {
+            "nome": "Ford",
+            "contato": {
+                "email": "contato@ford.com",
+                "telefone": "345-678-9012"
+            },
+            "modelos": [
+                {
+                    "nome": "Mustang",
+                    "preco": 40000
+                },
+                {
+                    "nome": "F-150",
+                    "preco": 35000
+                },
+                {
+                    "nome": "Focus",
+                    "preco": 25000
+                }
+            ]
+        },
+        {
+            "nome": "Chevrolet",
+            "contato": {
+                "email": "contato@chevrolet.com",
+                "telefone": "456-789-0123"
+            },
+            "modelos": [
+                {
+                    "nome": "Camaro",
+                    "preco": 45000
+                },
+                {
+                    "nome": "Silverado",
+                    "preco": 38000
+                },
+                {
+                    "nome": "Malibu",
+                    "preco": 27000
+                }
+            ]
+        },
+        {
+            "nome": "Ferrari",
+            "contato": {
+                "email": "contato@ferrari.com",
+                "telefone": "567-890-1234"
+            },
+            "modelos": [
+                {
+                    "nome": "488 GTB",
+                    "preco": 250000
+                },
+                {
+                    "nome": "F8 Tributo",
+                    "preco": 280000
+                },
+                {
+                    "nome": "812 Superfast",
+                    "preco": 320000
+                }
+            ]
+        },
+        {
+            "nome": "Lamborghini",
+            "contato": {
+                "email": "contato@lamborghini.com",
+                "telefone": "678-901-2345"
+            },
+            "modelos": [
+                {
+                    "nome": "Huracan",
+                    "preco": 280000
+                },
+                {
+                    "nome": "Aventador",
+                    "preco": 400000
+                },
+                {
+                    "nome": "Urus",
+                    "preco": 350000
+                }
+            ]
+        },
+        {
+            "nome": "Subaru",
+            "contato": {
+                "email": "contato@subaru.com",
+                "telefone": "789-012-3456"
+            },
+            "modelos": [
+                {
+                    "nome": "Impreza",
+                    "preco": 23000
+                },
+                {
+                    "nome": "Outback",
+                    "preco": 28000
+                },
+                {
+                    "nome": "Forester",
+                    "preco": 25000
+                }
+            ]
+        },
+        {
+            "nome": "Hyundai",
+            "contato": {
+                "email": "contato@hyundai.com",
+                "telefone": "890-123-4567"
+            },
+            "modelos": [
+                {
+                    "nome": "Elantra",
+                    "preco": 20000
+                },
+                {
+                    "nome": "Sonata",
+                    "preco": 28000
+                },
+                {
+                    "nome": "Tucson",
+                    "preco": 24000
+                }
+            ]
+        },
+        {
+            "nome": "Kia",
+            "contato": {
+                "email": "contato@kia.com",
+                "telefone": "901-234-5678"
+            },
+            "modelos": [
+                {
+                    "nome": "Optima",
+                    "preco": 23000
+                },
+                {
+                    "nome": "Sorento",
+                    "preco": 30000
+                },
+                {
+                    "nome": "Sportage",
+                    "preco": 25000
+                }
+            ]
+        },
+        {
+            "nome": "Lexus",
+            "contato": {
+                "email": "contato@lexus.com",
+                "telefone": "012-345-6789"
+            },
+            "modelos": [
+                {
+                    "nome": "ES",
+                    "preco": 35000
+                },
+                {
+                    "nome": "RX",
+                    "preco": 40000
+                },
+                {
+                    "nome": "NX",
+                    "preco": 32000
+                }
+            ]
+        },
+        {
+            "nome": "Porsche",
+            "contato": {
+                "email": "contato@porsche.com",
+                "telefone": "123-456-7890"
+            },
+            "modelos": [
+                {
+                    "nome": "911",
+                    "preco": 100000
+                },
+                {
+                    "nome": "Cayenne",
+                    "preco": 80000
+                },
+                {
+                    "nome": "Panamera",
+                    "preco": 90000
+                }
+            ]
+        },
+        {
+            "nome": "Maserati",
+            "contato": {
+                "email": "contato@maserati.com",
+                "telefone": "234-567-8901"
+            },
+            "modelos": [
+                {
+                    "nome": "Ghibli",
+                    "preco": 85000
+                },
+                {
+                    "nome": "Quattroporte",
+                    "preco": 120000
+                },
+                {
+                    "nome": "Levante",
+                    "preco": 95000
+                }
+            ]
+        },
+        {
+            "nome": "Alfa Romeo",
+            "contato": {
+                "email": "contato@alfaromeo.com",
+                "telefone": "345-678-9012"
+            },
+            "modelos": [
+                {
+                    "nome": "Giulia",
+                    "preco": 60000
+                },
+                {
+                    "nome": "Stelvio",
+                    "preco": 65000
+                },
+                {
+                    "nome": "4C",
+                    "preco": 70000
+                }
+            ]
+        },
+        {
+            "nome": "Fiat",
+            "contato": {
+                "email": "contato@fiat.com",
+                "telefone": "456-789-0123"
+            },
+            "modelos": [
+                {
+                    "nome": "500",
+                    "preco": 15000
+                },
+                {
+                    "nome": "Panda",
+                    "preco": 13000
+                },
+                {
+                    "nome": "Tipo",
+                    "preco": 18000
+                }
+            ]
+        },
+        {
+            "nome": "Peugeot",
+            "contato": {
+                "email": "contato@peugeot.com",
+                "telefone": "567-890-1234"
+            },
+            "modelos": [
+                {
+                    "nome": "208",
+                    "preco": 20000
+                },
+                {
+                    "nome": "308",
+                    "preco": 25000
+                },
+                {
+                    "nome": "3008",
+                    "preco": 28000
+                }
+            ]
+        },
+        {
+            "nome": "Aston Martin",
+            "contato": {
+                "email": "contato@astonmartin.com",
+                "telefone": "678-901-2345"
+            },
+            "modelos": [
+                {
+                    "nome": "Vantage",
+                    "preco": 120000
+                },
+                {
+                    "nome": "DB11",
+                    "preco": 180000
+                },
+                {
+                    "nome": "DBS Superleggera",
+                    "preco": 220000
+                }
+            ]
+        },
+        {
+            "nome": "McLaren",
+            "contato": {
+                "email": "contato@mclaren.com",
+                "telefone": "789-012-3456"
+            },
+            "modelos": [
+                {
+                    "nome": "570S",
+                    "preco": 200000
+                },
+                {
+                    "nome": "720S",
+                    "preco": 300000
+                },
+                {
+                    "nome": "Senna",
+                    "preco": 500000
+                }
+            ]
+        },
+        {
+            "nome": "Lotus",
+            "contato": {
+                "email": "contato@lotus.com",
+                "telefone": "890-123-4567"
+            },
+            "modelos": [
+                {
+                    "nome": "Elise",
+                    "preco": 50000
+                },
+                {
+                    "nome": "Exige",
+                    "preco": 80000
+                },
+                {
+                    "nome": "Evora",
+                    "preco": 100000
+                }
+            ]
+        },
+        {
+            "nome": "Bentley",
+            "contato": {
+                "email": "contato@bentley.com",
+                "telefone": "901-234-5678"
+            },
+            "modelos": [
+                {
+                    "nome": "Continental GT",
+                    "preco": 250000
+                },
+                {
+                    "nome": "Bentayga",
+                    "preco": 300000
+                },
+                {
+                    "nome": "Flying Spur",
+                    "preco": 280000
+                }
+            ]
+        },
+        {
+            "nome": "Bugatti",
+            "contato": {
+                "email": "contato@bugatti.com",
+                "telefone": "012-345-6789"
+            },
+            "modelos": [
+                {
+                    "nome": "Chiron",
+                    "preco": 3000000
+                },
+                {
+                    "nome": "Divo",
+                    "preco": 5000000
+                }
+            ]
+        },
+        {
+            "nome": "Rolls-Royce",
+            "contato": {
+                "email": "contato@rollsroyce.com",
+                "telefone": "123-456-7890"
+            },
+            "modelos": [
+                {
+                    "nome": "Ghost",
+                    "preco": 350000
+                },
+                {
+                    "nome": "Phantom",
+                    "preco": 500000
+                },
+                {
+                    "nome": "Cullinan",
+                    "preco": 450000
+                }
+            ]
+        },
+        {
+            "nome": "Audi",
+            "contato": {
+                "email": "contato@audi.com",
+                "telefone": "234-567-8901"
+            },
+            "modelos": [
+                {
+                    "nome": "A3",
+                    "preco": 30000
+                },
+                {
+                    "nome": "A4",
+                    "preco": 40000
+                },
+                {
+                    "nome": "Q5",
+                    "preco": 45000
+                }
+            ]
+        },
+        {
+            "nome": "Mazda",
+            "contato": {
+                "email": "contato@mazda.com",
+                "telefone": "345-678-9012"
+            },
+            "modelos": [
+                {
+                    "nome": "Mazda3",
+                    "preco": 22000
+                },
+                {
+                    "nome": "Mazda6",
+                    "preco": 28000
+                },
+                {
+                    "nome": "CX-5",
+                    "preco": 25000
+                }
+            ]
+        },
+        {
+            "nome": "Volvo",
+            "contato": {
+                "email": "contato@volvo.com",
+                "telefone": "567-890-1234"
+            },
+            "modelos": [
+                {
+                    "nome": "S60",
+                    "preco": 35000
+                },
+                {
+                    "nome": "XC60",
+                    "preco": 40000
+                },
+                {
+                    "nome": "XC90",
+                    "preco": 50000
+                }
+            ]
+        },
+        {
+            "nome": "Nissan",
+            "contato": {
+                "email": "contato@nissan.com",
+                "telefone": "678-901-2345"
+            },
+            "modelos": [
+                {
+                    "nome": "Altima",
+                    "preco": 25000
+                },
+                {
+                    "nome": "Maxima",
+                    "preco": 35000
+                },
+                {
+                    "nome": "Rogue",
+                    "preco": 30000
+                }
+            ]
+        }
+    ]
+}

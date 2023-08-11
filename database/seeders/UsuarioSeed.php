@@ -13,6 +13,10 @@ class UsuarioSeed extends Seeder
      */
     public function run(): void
     {
-        User::factory(1)->create();
+        $usuario_existente = User::where('email', 'usuario@usuario.com')->first();
+
+        if(!$usuario_existente) {
+            User::factory(1)->create();
+        }
     }
 }
