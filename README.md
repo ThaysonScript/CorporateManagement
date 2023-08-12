@@ -1,7 +1,10 @@
-# Laravel Inventory Management System
+# CorporateManagement
 >This project is a web application developed in Laravel that allows you to manage the inventory of a store.
 >
 >With it, you can register products, suppliers, customers, and control stock in and out.
+
+# Screenshots
+[] ()
 
 # Install and Run the Project
 Running the Inventory Manager on your local machine is an extremely simple task.
@@ -46,10 +49,6 @@ DB_PASSWORD=configure-your-own-password
 ```
 php artisan key:generate
 ```
-- Run the database migrations with
-```
-php artisan migrate
-```
 
 ## Do you want to configure a custom host?
 - You can configure a custom host for your environment:
@@ -83,11 +82,19 @@ create a new `.conf` file in `server/conf/example.conf`
 - Linux: `/etc/hosts`
 
 ## Start the application in development mode with
-Start your local server and database and type in the project's root:
+- Start your local server and database and type in the project's root:
 `php artisan serve`
 
-or, if a host is configured, enter the URL of your host on the server, for example,
-`InventoryManager.com`
+- or, if a host is configured, enter the URL of your host on the server, for example,
+`yourHost.com`
+
+- and migrate your fake data to analyze the initial application with
+`php artisan migrate`
+`php artisan db:seed`
+
+- your test login will be
+- email: `usuario@usuario.com`
+- password: `123456`
 
 # Technologies Used in the Application
 - Laravel as the PHP framework;
@@ -98,18 +105,7 @@ or, if a host is configured, enter the URL of your host on the server, for examp
 - PHP 8.1 or higher;
 - Laravel 10x;
 - Apache or Nginx web server;
-- MySQL 5.7 or higher.
-
-# Features
-- [x] User registration with information such as name, email, and password;
-
-- [ ] Product registration with information such as name, description, price, stock quantity, and category;
-
-- [ ] Supplier registration with information such as name, address, phone number, and email;
-
-- [ ] Recording of product entries and exits in the inventory;
-
-- [ ] Reports on products in stock, best-selling products, and most used suppliers.
+- MySQL 8.0 or higher.
 
 # Contributing
 ## Contributions are welcome!
@@ -125,17 +121,6 @@ To contribute to this project, follow these steps:
 ```git push origin my-new-feature```
 
 - Create a new Pull Request.
-  
-# Conclusion
->This is a simple yet complete project for managing the inventory of a store.
->With it, you can register products, suppliers, and customers, as well as control stock in and out.
->We hope this project can be useful for those who need a simple and easy-to-use inventory management solution.
->If you have any questions or suggestions, feel free to contact us or contribute to the project.
 
 # License
 This project is licensed under the `MIT License` - see the [LICENSE](https://github.com/ThaysonScript/GerenciarEstoque-Laravel/blob/main/LICENSE) file for more details.
-
-# Contributors
-<a href="https://github.com/ThaysonScript/GerenciadorEstoque-Laravel/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=ThaysonScript/GerenciadorEstoque-Laravel&max=500" alt="List of contributors" width="100%"/>
-</a>
