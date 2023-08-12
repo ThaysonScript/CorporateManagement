@@ -4,7 +4,12 @@
 >With it, you can register products, suppliers, customers, and control stock in and out.
 
 # Screenshots
-[] ()
+![Landing](https://github.com/ThaysonScript/CorporateManagement/blob/main/screenshots/Captura%20de%20tela%202023-07-29%20162804.png)
+![Login](https://github.com/ThaysonScript/CorporateManagement/blob/main/screenshots/Captura%20de%20tela%202023-07-29%20163016.png)
+![Registro](https://github.com/ThaysonScript/CorporateManagement/blob/main/screenshots/Captura%20de%20tela%202023-07-29%20163043.png)
+![Home](https://github.com/ThaysonScript/CorporateManagement/blob/main/screenshots/Captura%20de%20tela%202023-07-29%20163112.png)
+
+### More Screenshots here: https://github.com/ThaysonScript/CorporateManagement/tree/main/screenshots
 
 # Install and Run the Project
 Running the Inventory Manager on your local machine is an extremely simple task.
