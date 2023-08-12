@@ -5,6 +5,8 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Models\Cadastros\Estoque;
+use App\Models\Cadastros\Fornecedor;
+use App\Models\Cadastros\Produto;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
@@ -25,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'google_id'
     ];
 
     /**
@@ -49,6 +52,17 @@ class User extends Authenticatable
     public function Estoques()
     {
         return $this->hasMany(Estoque::class);
+    }
+
+    public function Produtos()
+    {
+        return $this->hasMany(Produto::class);
+    }
+
+
+    public function Fornecedores()
+    {
+        return $this->hasMany(Fornecedor::class);
     }
     
 

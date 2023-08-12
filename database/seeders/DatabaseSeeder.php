@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use Database\Seeders\Cadastros\EstoqueSeed;
+use Database\Seeders\Cadastros\CategoriaSeed;
+use Database\Seeders\Cadastros\ProdutoSeed;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,9 +26,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UsuarioSeed::class,
-            // EstoqueSeed::class,
-            // CategoriaSeed::class,
-            // ProdutoSeed::class
+            EstoqueSeed::class,
+            CategoriaSeed::class,
+            ProdutoSeed::class
         ]);
     }
 }
