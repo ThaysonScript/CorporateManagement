@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Cadastros\Estoque\EstoqueController;
 use App\Http\Controllers\Cadastros\Categoria\CategoriaController;
+use App\Http\Controllers\Cadastros\Fornecedores\FornecedorController;
 use App\Http\Controllers\Cadastros\Produto\ProdutoController;
 
 Route::middleware('autenticado')->group(function() {
@@ -25,4 +26,7 @@ Route::middleware('autenticado')->group(function() {
     Route::get('/home/produtos-de-{id}', [ProdutoController::class, 'ProdutosShow'])->name('site.mostrar.produtos');
     Route::put('/home/atualizando-produto-{id}', [ProdutoController::class, 'ProdutoUpdate'])->name('atualizar.produto');
     Route::delete('/home/deletando-produto-{id}', [ProdutoController::class, 'ProdutoDeletar'])->name('deletar.produto');
+
+    Route::get('/home/cadastro/fornecedores', [FornecedorController::class, 'FornecedorCreate'])->name('cadastros.fornecedores');
+    Route::post('/home/cadastrando/fornecedores', [FornecedorController::class, 'FornecedorStore'])->name('cadastros.fornecedores-store');
 });

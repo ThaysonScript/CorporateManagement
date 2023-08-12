@@ -26,15 +26,17 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Título</th>
-                                    <th scope="col" class="w-50">Descrição</th>
-                                    <th scope="col">Opções</th>
+                                    <th scope="col" class="w-25">Título</th>
+                                    <th scope="col" class="w-25">Descrição</th>
+                                    <th scope="col" class="w-25">Fornecedores</th>
+                                    <th scope="col" colspan="2" class="w-25">Opções</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 @foreach ($estoques as $estoque)
                                     <tr>
+                                        {{-- id --}}
                                         <td>{{ $estoque->id }}</td>
 
                                         <form action="{{ route('cadastros.estoques-atualizar', $estoque->id) }}"
@@ -42,35 +44,41 @@
                                             @csrf
                                             @method('PUT')
 
+                                            {{-- titulo --}}
                                             <td class="text-center">
-
                                                 <input type="text" name="tituloEstoque"
                                                     value="{{ $estoque->titulo }}" id="tituloEstoque{{ $estoque->id }}"
-                                                    class="me-4" readonly>
+                                                    readonly>
                                             </td>
 
-                                            <td class="text-center">
+                                            {{-- descricao --}}
+                                            <td>
+                                                <textarea class="form-control text-center" name="descricaoEstoque" id="descricaoEstoque{{ $estoque->id }}"
+                                                    cols="50" rows="2" readonly>
+                                                        {{ $estoque->descricao }}
+                                                    </textarea>
+                                            </td>
 
-                                                <textarea name="descricaoEstoque" id="descricaoEstoque{{ $estoque->id }}" cols="80" rows="2" readonly>
-                                                    {{ $estoque->descricao }}
+                                            {{-- fornecedores --}}
+                                            <td>
+                                                <textarea class="form-control text-center" name="fornecedorEstoque" id="fornecedorEstoque{{ $estoque->id }}"
+                                                    cols="35" rows="2" readonly>
+                                                    {{ $estoque->Fornecedor() }}
                                                 </textarea>
                                             </td>
 
+                                            {{-- opcoes --}}
                                             <td class="d-flex justify-content-end">
 
                                                 <a href="{{ route('site.mostrar.categorias', $estoque->id) }}"
                                                     class="btn btn-primary btn-sm me-4">
                                                     Ver Categorias
-                                                    {{-- ver fornecedores talves --}}
                                                 </a>
 
                                                 <a href="{{ route('site.mostrar.produtosAll', $estoque->id) }}"
                                                     class="btn btn-primary btn-sm me-4">
                                                     Ver Produtos
-                                                    {{-- ver fornecedores talves --}}
                                                 </a>
-
-
 
                                                 <a class="btn btn-primary btn-sm me-4"
                                                     id="botaoAtualizar{{ $estoque->id }}"
@@ -123,23 +131,26 @@
                 const botaoAtualizar = document.getElementById('botaoAtualizar' + {{ $estoque->id }})
 
                 function Atualizar(id) {
-                    const tituloCategoria = document.getElementById('tituloEstoque' + id);
-                    const descricaoCategoria = document.getElementById('descricaoEstoque' + id);
+                    const tituloEstoque = document.getElementById('tituloEstoque' + id);
+                    const descricaoEstoque = document.getElementById('descricaoEstoque' + id);
+                    const fornecedorEstoque = document.getElementById('fornecedorEstoque' + id)
                     const botaoSalvar = document.getElementById('botaoSalvar' + id);
 
                     console.log('passou')
                     console.log(botaoSalvar)
 
-                    if (tituloCategoria.readOnly && descricaoCategoria.readOnly) {
+                    if (tituloEstoque.readOnly && descricaoEstoque.readOnly) {
                         // Se o <textarea> estiver somente leitura, habilita ambos os campos
-                        descricaoCategoria.removeAttribute('readonly');
-                        tituloCategoria.removeAttribute('readonly');
+                        tituloEstoque.removeAttribute('readonly');
+                        descricaoEstoque.removeAttribute('readonly');
+                        fornecedorEstoque.removeAttribute('readonly')
 
                         botaoSalvar.removeAttribute('disabled');
                     } else {
                         // Caso contrário, desabilita ambos os campos
-                        descricaoCategoria.setAttribute('readonly', 'readonly');
-                        tituloCategoria.setAttribute('readonly', 'readonly');
+                        tituloEstoque.setAttribute('readonly', 'readonly');
+                        descricaoEstoque.setAttribute('readonly', 'readonly');
+                        fornecedorEstoque.setAttribute('readonly', 'readonly')
 
                         botaoSalvar.setAttribute('disabled', 'disabled');
                     }
@@ -149,25 +160,7 @@
 
 
 
-                function aoClicarExcluir() {
-                    const row = this.closest('tr');
-                    const categoryName = row.querySelector('td:nth-child(2)').innerText;
 
-                    Swal.fire({
-                        title: 'Tem certeza?',
-                        text: `Deseja excluir a categoria "${categoryName}"?`,
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Sim, excluir!',
-                        cancelButtonText: 'Cancelar'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            row.remove();
-                        }
-                    });
-                }
 
                 function aoAlterarCampoPesquisa() {
                     const textoPesquisa = this.value.toLowerCase();
@@ -193,15 +186,7 @@
                     }), "categorias.xlsx");
                 }
 
-                function verificarNumeroLinhas() {
-                    const tabela = document.getElementById("categoriesTable");
-                    const numLinhas = tabela.getElementsByTagName("tr").length;
 
-                    if (numLinhas > 30) {
-                        const linkContinuar = document.getElementById("continueLink");
-                        linkContinuar.style.display = "block";
-                    }
-                }
 
                 document.addEventListener('DOMContentLoaded', function() {
                     const botoesExcluir = document.querySelectorAll('.excluir-btn');

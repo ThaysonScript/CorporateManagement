@@ -20,6 +20,10 @@ class PaginaGeralController extends Controller
         
         $estoques = $user->Estoques;
 
+        $fornecedor = $user->Fornecedores;
+
+        // dd($fornecedor);
+
         return view('site.home', compact('estoques'));
     }
 
